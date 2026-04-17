@@ -91,7 +91,7 @@
     }
 
     .players-panel {
-      width: 300px;
+      width: 260px;
       background: rgba(255, 255, 255, 0.95);
       border-radius: 15px;
       padding: 20px;
@@ -167,13 +167,25 @@
     }
 
     .chat-panel {
-      flex: 1;
+      flex: 0 1 720px;
+      max-width: 760px;
       background: rgba(255, 255, 255, 0.95);
       border-radius: 15px;
       padding: 20px;
       box-shadow: 0 8px 32px rgba(0,0,0,0.1);
       display: flex;
       flex-direction: column;
+    }
+
+    @media (max-width: 1024px) {
+      .players-panel {
+        width: 240px;
+      }
+
+      .chat-panel {
+        flex: 1;
+        max-width: none;
+      }
     }
 
     .chat-header {
@@ -867,7 +879,7 @@
             <textarea 
               id="messageInput" 
               class="message-input" 
-              placeholder="輸入訊息... (Ctrl+Enter 發送，Esc 清除)"
+              placeholder="輸入訊息... (Enter 發送，Shift+Enter 換行，Esc 清除)"
               rows="1"
               maxlength="200"
             ></textarea>
@@ -1167,7 +1179,7 @@
         });
 
         messageInput.addEventListener('keydown', (e) => {
-          if (e.ctrlKey && e.key === 'Enter') {
+          if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) {
             e.preventDefault();
             this.sendMessage(messageInput.value);
           }
