@@ -1053,30 +1053,81 @@
 
     .chest-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(420px, 420px));
+      gap: 24px;
       margin-top: 20px;
-      align-items: stretch;
+      align-items: start;
+      justify-content: center;
+      padding: 24px;
+      box-sizing: border-box;
     }
 
     .chest-card {
-      background: rgba(10, 20, 40, 0.88);
-      border: 2px solid rgba(0, 255, 255, 0.6);
-      border-radius: 18px;
-      padding: 18px;
+      background:
+        radial-gradient(circle at top left, rgba(34, 211, 238, 0.20), transparent 36%),
+        radial-gradient(circle at bottom right, rgba(139, 92, 246, 0.16), transparent 40%),
+        linear-gradient(180deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.88));
+      border: 2px solid rgba(34, 211, 238, 0.58);
+      border-radius: 26px;
+      padding: 22px 24px 24px;
       position: relative;
-      overflow: hidden;
+      overflow: visible;
       backdrop-filter: blur(10px);
-      box-shadow: 0 0 18px rgba(0, 255, 255, 0.14);
+      box-shadow:
+        0 18px 38px rgba(0, 0, 0, 0.42),
+        0 0 24px rgba(34, 211, 238, 0.24),
+        inset 0 1px 0 rgba(255, 255, 255, 0.14);
       transition: transform 0.25s ease, box-shadow 0.25s ease;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 14px;
+      width: 420px;
+      max-width: 420px;
+      min-height: auto;
+      height: auto;
+      max-height: none;
+      box-sizing: border-box;
     }
 
     .chest-card.used {
       opacity: 0.7;
       filter: grayscale(0.25);
+    }
+
+    .chest-image-wrap {
+      width: 100%;
+      height: 160px;
+      min-height: 160px;
+      max-height: 160px;
+      border-radius: 20px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at center, rgba(250, 204, 21, 0.22), transparent 54%),
+        linear-gradient(135deg, rgba(6, 182, 212, 0.22), rgba(139, 92, 246, 0.22));
+      border: 1px solid rgba(34, 211, 238, 0.30);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
+    .chest-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .chest-image-wrap.image-missing {
+      background:
+        radial-gradient(circle at center, rgba(250, 204, 21, 0.30), transparent 56%),
+        linear-gradient(135deg, rgba(6, 182, 212, 0.30), rgba(139, 92, 246, 0.30));
+    }
+
+    .chest-image-wrap.image-missing::after {
+      content: "🎁";
+      font-size: 58px;
+      filter: drop-shadow(0 0 14px rgba(250, 204, 21, 0.45));
     }
 
     .chest-card::before {
@@ -1091,40 +1142,86 @@
     }
 
     .chest-title {
-      color: #00ffff;
-      font-size: 1.25rem;
+      color: #22d3ee;
+      font-size: 24px;
       font-weight: 900;
-      text-shadow: 0 0 10px rgba(0, 255, 255, 0.35);
+      text-shadow:
+        0 0 10px rgba(34, 211, 238, 0.65),
+        0 2px 6px rgba(0, 0, 0, 0.45);
+      letter-spacing: 1px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      line-height: 1.15;
+    }
+
+    .chest-title span:first-child {
+      font-size: 28px;
+      line-height: 1;
     }
 
     .chest-meta {
       display: flex;
       justify-content: space-between;
-      gap: 10px;
+      gap: 12px;
       flex-wrap: wrap;
-      color: #ddd;
-      font-size: 0.9rem;
+      color: #e5e7eb;
+      font-size: 15px;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .chest-meta span {
-      background: rgba(0, 0, 0, 0.25);
-      border: 1px solid rgba(0, 255, 255, 0.25);
-      padding: 6px 10px;
+      background: rgba(15, 23, 42, 0.72);
+      border: 1px solid rgba(34, 211, 238, 0.36);
+      padding: 0 14px;
       border-radius: 999px;
+      height: 34px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      box-sizing: border-box;
+      font-weight: 800;
+    }
+
+    .chest-meta span:last-child {
+      max-width: 230px;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .chest-code {
       font-family: 'Roboto Mono', monospace;
-      font-size: 1.25rem;
+      font-size: 26px;
       font-weight: 900;
-      letter-spacing: 2px;
-      color: #ffd700;
+      letter-spacing: 4px;
+      color: #facc15;
       text-align: center;
-      padding: 10px 12px;
-      border-radius: 14px;
-      border: 2px solid rgba(255, 215, 0, 0.45);
-      background: rgba(0,0,0,0.35);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.10);
+      padding: 0 16px;
+      border-radius: 18px;
+      border: 2px solid rgba(250, 204, 21, 0.62);
+      background:
+        linear-gradient(180deg, rgba(2, 6, 23, 0.78), rgba(15, 23, 42, 0.72));
+      box-shadow:
+        inset 0 0 18px rgba(250, 204, 21, 0.10),
+        0 0 14px rgba(250, 204, 21, 0.14);
+      min-height: 64px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      line-height: 1.15;
+    }
+
+    .chest-time {
+      text-align: center;
+      color: rgba(229, 231, 235, 0.72);
+      font-size: 15px;
+      line-height: 1.4;
     }
 
     .chest-actions {
@@ -1133,22 +1230,37 @@
       align-items: center;
       justify-content: center;
       flex-wrap: wrap;
-      margin-top: auto;
-      padding-top: 10px;
-      border-top: 1px solid rgba(0, 255, 255, 0.18);
+      width: 100%;
+      margin-top: 4px;
+      box-sizing: border-box;
     }
 
     .redeem-chest-btn {
-      background: linear-gradient(135deg, #00ffff 0%, #a259ff 100%);
-      color: #000;
+      background: linear-gradient(135deg, #06b6d4, #8b5cf6);
+      color: #06111f;
       border: none;
-      padding: 10px 16px;
-      border-radius: 12px;
+      padding: 0 28px;
+      border-radius: 999px;
       font-weight: 900;
       cursor: pointer;
       transition: all 0.25s ease;
-      box-shadow: 0 0 18px rgba(0, 255, 255, 0.22);
-      min-width: 140px;
+      box-shadow:
+        0 8px 18px rgba(0, 0, 0, 0.30),
+        inset 0 1px 0 rgba(255, 255, 255, 0.32);
+      min-width: 170px;
+      height: 46px;
+      min-height: 46px;
+      box-sizing: border-box;
+      white-space: nowrap;
+      font-size: 19px;
+      line-height: 1;
+    }
+
+    .redeem-chest-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.88;
+      background: linear-gradient(135deg, #38bdf8, #7c3aed);
+      color: #0f172a;
     }
 
     .redeem-chest-btn:hover {
@@ -1207,51 +1319,195 @@
 
     .bargain-content {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
       background: linear-gradient(145deg, rgba(15, 25, 50, 0.98) 0%, rgba(25, 45, 85, 0.98) 50%, rgba(15, 25, 50, 0.98) 100%);
-      border: 3px solid transparent;
-      border-radius: 28px;
-      padding: 35px;
-      max-width: 480px;
-      width: 90%;
+      border: none;
+      border-radius: 0;
+      padding: 0;
+      max-width: none;
+      width: 100%;
+      height: 100%;
       text-align: center;
-      box-shadow:
-        0 0 60px rgba(255, 215, 0, 0.3),
-        0 0 100px rgba(0, 255, 255, 0.15),
-        inset 0 0 80px rgba(255, 215, 0, 0.05),
-        inset 0 0 30px rgba(0, 255, 255, 0.03);
-      animation: bargainPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: none;
+      animation: bargainFadeIn 0.4s ease-out;
       position: relative;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
-    .bargain-content::before {
-      content: '';
-      position: absolute;
-      top: -2px;
-      left: -2px;
-      right: -2px;
-      bottom: -2px;
-      background: linear-gradient(45deg, #ffd700, #00ffff, #a259ff, #ffd700);
-      border-radius: 28px;
-      z-index: -1;
-      opacity: 0.8;
-      animation: borderGlow 4s linear infinite;
-      background-size: 400% 400%;
+    .bargain-header {
+      flex: 0 0 auto;
+      padding: 30px 20px 10px;
+      max-width: 500px;
+      width: 100%;
+      box-sizing: border-box;
     }
 
-    @keyframes borderGlow {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    .bargain-record-section {
+      flex: 1 1 auto;
+      min-height: 0;
+      overflow-y: auto;
+      padding: 10px 20px;
+      max-width: 500px;
+      width: 100%;
+      box-sizing: border-box;
     }
 
-    @keyframes bargainPop {
-      0% { transform: translate(-50%, -50%) scale(0.5) rotate(-5deg); opacity: 0; }
-      60% { transform: translate(-50%, -50%) scale(1.05) rotate(2deg); opacity: 1; }
-      100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); opacity: 1; }
+    .bargain-footer {
+      flex: 0 0 auto;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      padding: 15px 20px 30px;
+      background: rgba(15, 25, 50, 0.98);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      max-width: 500px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .bargain-record-section::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .bargain-record-section::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .bargain-record-section::-webkit-scrollbar-thumb {
+      background: rgba(0, 255, 255, 0.3);
+      border-radius: 4px;
+    }
+
+    .bargain-record-section::-webkit-scrollbar-thumb:hover {
+      background: rgba(0, 255, 255, 0.5);
+    }
+
+    @media (max-width: 600px) {
+      .chest-grid {
+        grid-template-columns: repeat(auto-fit, minmax(420px, 420px));
+        padding: 16px;
+      }
+
+      .chest-card {
+        width: 92vw;
+        max-width: 360px;
+        padding: 20px 18px 22px;
+        gap: 12px;
+        border-radius: 24px;
+      }
+
+      .chest-image-wrap {
+        height: 130px;
+        min-height: 130px;
+        max-height: 130px;
+      }
+
+      .chest-title {
+        font-size: 21px;
+      }
+
+      .chest-title span:first-child {
+        font-size: 25px;
+      }
+
+      .chest-meta {
+        gap: 8px;
+        font-size: 13px;
+      }
+
+      .chest-meta span {
+        height: 32px;
+        font-size: 13px;
+        padding: 0 10px;
+      }
+
+      .chest-meta span:last-child {
+        max-width: 180px;
+      }
+
+      .chest-code {
+        min-height: 58px;
+        font-size: 22px;
+        letter-spacing: 2px;
+        padding: 0 12px;
+      }
+
+      .chest-time {
+        font-size: 13px;
+      }
+
+      .chest-actions {
+        margin-top: 4px;
+      }
+
+      .redeem-chest-btn {
+        height: 44px;
+        min-height: 44px;
+        font-size: 18px;
+        padding: 0 20px;
+        min-width: 150px;
+      }
+
+      .bargain-header {
+        padding: 20px 15px 8px;
+        max-width: 100%;
+      }
+
+      .bargain-record-section {
+        padding: 8px 15px;
+        max-width: 100%;
+      }
+
+      .bargain-footer {
+        padding: 12px 15px 20px;
+        max-width: 100%;
+      }
+
+      .shopkeeper-mood {
+        width: 100px;
+        height: 100px;
+      }
+
+      .bargain-title {
+        font-size: 1.3rem;
+      }
+
+      .price-proposal input {
+        width: 120px;
+        font-size: 1.2rem;
+        padding: 10px 14px;
+      }
+
+      .quick-price-tags {
+        gap: 8px;
+      }
+
+      .quick-price-tag {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+      }
+
+      .bargain-footer {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .bargain-btn {
+        width: 100%;
+        min-width: auto;
+      }
+    }
+
+    @keyframes bargainFadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
     }
 
     .shopkeeper-mood {
@@ -1686,6 +1942,27 @@
       padding-top: 25px;
       border-top: 2px solid rgba(255, 255, 255, 0.1);
       text-align: left;
+      max-height: 200px;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    .bargain-history::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .bargain-history::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 3px;
+    }
+
+    .bargain-history::-webkit-scrollbar-thumb {
+      background: rgba(0, 255, 255, 0.3);
+      border-radius: 3px;
+    }
+
+    .bargain-history::-webkit-scrollbar-thumb:hover {
+      background: rgba(0, 255, 255, 0.5);
     }
 
     .bargain-history-title {
@@ -1738,6 +2015,143 @@
     }
 
     /* 卡片交易區 */
+    .shop-trade-center {
+      width: min(1180px, 96%);
+      margin: 28px auto;
+      padding: 22px;
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at top left, rgba(124, 58, 237, 0.22), transparent 32%),
+        radial-gradient(circle at top right, rgba(14, 165, 233, 0.18), transparent 30%),
+        linear-gradient(180deg, rgba(12, 18, 38, 0.96), rgba(8, 12, 24, 0.98));
+      border: 2px solid rgba(255, 255, 255, 0.14);
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.32);
+      color: #fff;
+    }
+
+    .trade-center-hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 20px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .trade-center-kicker {
+      display: inline-flex;
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      color: #ffd700;
+      background: rgba(255, 215, 0, 0.12);
+      margin-bottom: 8px;
+    }
+
+    .trade-center-hero h2 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 42px);
+      color: #ffffff;
+      text-shadow: 0 0 18px rgba(56, 189, 248, 0.45);
+    }
+
+    .trade-center-hero p {
+      margin: 8px 0 0;
+      color: rgba(255, 255, 255, 0.78);
+      line-height: 1.6;
+    }
+
+    .trade-center-stars {
+      min-width: 140px;
+      padding: 14px 18px;
+      border-radius: 18px;
+      text-align: center;
+      background: rgba(255, 215, 0, 0.14);
+      border: 1px solid rgba(255, 215, 0, 0.38);
+    }
+
+    .trade-center-stars span {
+      display: block;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    .trade-center-stars strong {
+      display: block;
+      margin-top: 4px;
+      font-size: 26px;
+      color: #ffd700;
+    }
+
+    .trade-center-tabs {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 20px 0;
+      padding: 8px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .trade-tab-btn {
+      flex: 1;
+      min-width: 130px;
+      min-height: 44px;
+      border: 0;
+      border-radius: 14px;
+      cursor: pointer;
+      font-weight: 900;
+      color: rgba(255, 255, 255, 0.78);
+      background: transparent;
+    }
+
+    .trade-tab-btn.active {
+      color: #1f2937;
+      background: linear-gradient(135deg, #facc15, #f97316);
+      box-shadow: 0 8px 18px rgba(250, 204, 21, 0.28);
+    }
+
+    .trade-tab-btn:hover:not(.active) {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .trade-tab-panels {
+      margin-top: 8px;
+    }
+
+    .trade-panel {
+      display: none;
+      padding: 18px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.11);
+    }
+
+    .trade-panel.active {
+      display: block;
+    }
+
+    .trade-panel-header {
+      margin-bottom: 16px;
+    }
+
+    .trade-panel-header h3 {
+      margin: 0;
+      font-size: 24px;
+      color: #dff8ff;
+    }
+
+    .trade-panel-header p {
+      margin: 6px 0 0;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* 舊的 trade-section 樣式保留用於兼容 */
     .trade-section {
       max-width: 1000px;
       margin: 0 auto;
@@ -1760,19 +2174,1090 @@
       line-height: 1.6;
     }
 
+    /* 賣家收益中心 */
+    .seller-income-center {
+      margin-top: 24px;
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.88);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    .seller-income-center .section-header h2 {
+      color: #00ff88;
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+      text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+    }
+
+    .seller-income-center .section-header p {
+      color: #888;
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+    }
+
+    .seller-income-summary {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin: 14px 0;
+    }
+
+    .income-summary-card {
+      padding: 14px;
+      border-radius: 16px;
+      background: rgba(255, 248, 220, 0.95);
+      text-align: center;
+      font-weight: 800;
+    }
+
+    .income-summary-card .summary-label {
+      display: block;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .income-summary-card strong {
+      display: block;
+      margin-top: 6px;
+      font-size: 24px;
+      color: #ffd700;
+    }
+
+    .seller-income-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .seller-income-actions button,
+    .claim-single-stars-btn {
+      min-height: 38px;
+      border-radius: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      padding: 8px 16px;
+      border: none;
+      background: linear-gradient(135deg, #00ff88, #00cc6a);
+      color: #000;
+      transition: all 0.3s ease;
+    }
+
+    .seller-income-actions button:hover,
+    .claim-single-stars-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 255, 136, 0.4);
+    }
+
+    .seller-income-actions button:disabled,
+    .claim-single-stars-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .seller-income-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, 180px);
+      gap: 16px;
+      justify-content: center;
+      align-items: start;
+    }
+
+    .seller-income-item {
+      border-radius: 12px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .seller-income-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .seller-income-item .warehouse-card-image-wrap {
+      width: 100%;
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.05);
+    }
+
+    .seller-income-item .warehouse-card-image-wrap img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .seller-income-item .warehouse-card-info {
+      padding: 10px;
+      text-align: center;
+    }
+
+    .seller-income-item .warehouse-card-name {
+      font-size: 0.9rem;
+      font-weight: 800;
+      margin-bottom: 4px;
+      color: #333;
+    }
+
+    .seller-income-item .warehouse-card-rarity {
+      font-size: 0.8rem;
+      color: #666;
+      margin-bottom: 8px;
+    }
+
+    .seller-income-item .trade-card-extra {
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.03);
+      text-align: center;
+    }
+
+    .seller-income-item .trade-card-price {
+      font-size: 0.85rem;
+      color: #ffd700;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .seller-income-item .claim-single-stars-btn {
+      width: 100%;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 768px) {
+      .seller-income-summary {
+        grid-template-columns: 1fr;
+      }
+
+      .seller-income-actions {
+        flex-direction: column;
+      }
+
+      .seller-income-actions button {
+        width: 100%;
+      }
+
+      .seller-income-list {
+        grid-template-columns: repeat(auto-fill, 140px);
+      }
+    }
+
+    :root {
+      --rarity-a-border: #00ffff;
+      --rarity-r-border: #a259ff;
+      --rarity-ssr-border: #ffd700;
+      --rarity-a-glow: rgba(0, 255, 255, 0.35);
+      --rarity-r-glow: rgba(162, 89, 255, 0.35);
+      --rarity-ssr-glow: rgba(255, 215, 0, 0.4);
+    }
+
+    .trade-list-card-panel {
+      max-width: 960px;
+      margin: 0 auto 28px;
+      padding: 18px;
+      border-radius: 18px;
+      border: 2px solid rgba(0, 255, 255, 0.28);
+      background: rgba(10, 20, 40, 0.82);
+      box-shadow: 0 0 24px rgba(0, 255, 255, 0.12);
+      box-sizing: border-box;
+    }
+
+    .trade-list-card-panel .section-header {
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .trade-list-card-panel .section-header h2 {
+      color: #00ffff;
+      font-size: 1.7rem;
+      margin: 0 0 8px;
+    }
+
+    .trade-list-card-panel .section-header p {
+      margin: 0;
+      color: #cfe8ff;
+      font-size: 0.98rem;
+    }
+
+    .trade-list-layout,
+    .market-sell-panel,
+    .sell-section {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 220px;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .trade-list-form {
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.08);
+      display: grid;
+      gap: 10px;
+    }
+
+    .trade-list-form label {
+      display: block;
+      margin-bottom: 12px;
+      font-weight: 900;
+      color: #fff;
+    }
+
+    .trade-list-form select,
+    .trade-list-form input {
+      width: 100%;
+      min-height: 44px;
+      margin-top: 6px;
+      padding: 0 12px;
+      border-radius: 12px;
+      border: 2px solid rgba(56, 189, 248, 0.28);
+      background: rgba(255, 255, 255, 0.96);
+      color: #111827;
+      font-size: 15px;
+    }
+
+    .trade-list-form button {
+      width: 100%;
+      min-height: 46px;
+      border-radius: 14px;
+      margin-top: 12px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .trade-selected-preview {
+      display: flex;
+      justify-content: center;
+    }
+
+    .trade-player-stars {
+      max-width: 960px;
+      margin: 0 auto 18px;
+      padding: 12px 16px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.16), rgba(255, 170, 0, 0.08));
+      border: 2px solid rgba(255, 215, 0, 0.28);
+      color: #ffe27a;
+      font-weight: 800;
+      text-align: center;
+      box-sizing: border-box;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.12);
+    }
+
+    .trade-list-card-panel .section-header {
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .trade-list-card-panel .section-header h2 {
+      color: #00ffff;
+      font-size: 1.7rem;
+      margin: 0 0 8px;
+    }
+
+    .trade-list-card-panel .section-header p {
+      margin: 0;
+      color: #cfe8ff;
+      font-size: 0.98rem;
+    }
+
+    .trade-list-layout,
+    .market-sell-panel,
+    .sell-section {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .trade-list-form {
+      display: grid;
+      gap: 10px;
+    }
+
+    .trade-list-form label {
+      color: #ffd700;
+      font-weight: 700;
+      font-size: 0.96rem;
+    }
+
+    .trade-list-form select,
+    .trade-list-form input {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 2px solid rgba(0, 255, 255, 0.3);
+      background: rgba(0, 0, 0, 0.34);
+      color: #fff;
+      box-sizing: border-box;
+      outline: none;
+      font-size: 0.96rem;
+    }
+
+    .trade-list-form select:focus,
+    .trade-list-form input:focus {
+      border-color: rgba(0, 255, 255, 0.78);
+      box-shadow: 0 0 0 3px rgba(0, 255, 255, 0.12);
+    }
+
+    #submitTradeCardBtn {
+      width: 100%;
+      min-height: 42px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #00ffff 0%, #00aaff 100%);
+      color: #041018;
+      font-weight: 900;
+      cursor: pointer;
+      box-sizing: border-box;
+    }
+
+    #submitTradeCardBtn:disabled {
+      background: linear-gradient(135deg, #666 0%, #444 100%);
+      color: #ddd;
+      cursor: not-allowed;
+    }
+
+    .trade-selected-card-preview,
+    .sell-card-preview {
+      width: 100%;
+      min-height: 320px;
+      padding: 16px;
+      border: 2px dashed rgba(255, 255, 255, 0.18);
+      border-radius: 20px;
+      background: rgba(15, 23, 42, 0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    .trade-preview-empty {
+      width: 100%;
+      min-height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: rgba(255,255,255,0.68);
+      border: 2px dashed rgba(255,255,255,0.14);
+      border-radius: 16px;
+      padding: 14px;
+      box-sizing: border-box;
+    }
+
+    .trade-preview-card {
+      width: 120px;
+      height: 160px;
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      background: rgba(8, 18, 36, 0.95);
+      border: 2px solid #00ffff;
+      box-shadow: 0 0 20px rgba(0,255,255,0.16);
+      flex-shrink: 0;
+    }
+
+    .trade-preview-card.rarity-a,
+    .trade-card.rarity-a {
+      border-color: var(--rarity-a-border);
+      box-shadow: 0 0 18px var(--rarity-a-glow);
+    }
+
+    .trade-preview-card.rarity-r,
+    .trade-card.rarity-r {
+      border-color: var(--rarity-r-border);
+      box-shadow: 0 0 18px var(--rarity-r-glow);
+    }
+
+    .trade-preview-card.rarity-ssr,
+    .trade-card.rarity-ssr {
+      border-color: var(--rarity-ssr-border);
+      box-shadow: 0 0 18px var(--rarity-ssr-glow);
+    }
+
+    .trade-preview-card .card-media {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .sell-card-preview {
+      width: 100%;
+      min-height: 380px;
+      padding: 18px;
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at top, rgba(255, 255, 255, 0.12), transparent 35%),
+        rgba(15, 23, 42, 0.65);
+      border: 2px dashed rgba(255, 255, 255, 0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    .sell-preview-card {
+      position: relative;
+      width: 240px;
+      max-width: 100%;
+      padding: 16px;
+      border-radius: 26px;
+      background: rgba(15, 23, 42, 0.82);
+      border: 3px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.38);
+      box-sizing: border-box;
+      overflow: hidden;
+
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 12px !important;
+
+      text-align: center;
+      animation: sellPreviewFadeIn 0.25s ease both;
+    }
+
+    .sell-preview-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 24px;
+      pointer-events: none;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.22), transparent 35%),
+        radial-gradient(circle at top right, rgba(255,255,255,0.14), transparent 30%);
+      opacity: 0.45;
+    }
+
+    .sell-preview-rarity-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 3;
+      min-width: 48px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.8px;
+      color: #ffffff;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.28);
+    }
+
+    @keyframes sellPreviewFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px) scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .sell-preview-card.rarity-ssr {
+      border-color: #facc15;
+      background:
+        linear-gradient(180deg, rgba(250, 204, 21, 0.24), rgba(15, 23, 42, 0.88)),
+        rgba(15, 23, 42, 0.82);
+      box-shadow:
+        0 0 18px rgba(250, 204, 21, 0.72),
+        0 0 46px rgba(245, 158, 11, 0.38),
+        0 16px 36px rgba(0, 0, 0, 0.42);
+    }
+
+    .sell-preview-card.rarity-ssr .sell-preview-img-wrap {
+      border: 2px solid #facc15;
+      box-shadow: 0 0 18px rgba(250, 204, 21, 0.55);
+    }
+
+    .sell-preview-card.rarity-ssr .sell-preview-rarity-badge,
+    .sell-preview-card.rarity-ssr .sell-preview-rarity-text {
+      color: #422006;
+      background: linear-gradient(135deg, #fef08a, #facc15, #f59e0b);
+      border-color: rgba(254, 243, 199, 0.8);
+    }
+
+    .sell-preview-card.rarity-ssr .sell-preview-name {
+      color: #fef3c7;
+      text-shadow: 0 0 8px rgba(250, 204, 21, 0.58);
+    }
+
+    .sell-preview-card.rarity-ssr .sell-preview-series {
+      color: #fde68a;
+    }
+
+    .sell-preview-card.rarity-r {
+      border-color: #a855f7;
+      background:
+        linear-gradient(180deg, rgba(168, 85, 247, 0.22), rgba(15, 23, 42, 0.88)),
+        rgba(15, 23, 42, 0.82);
+      box-shadow:
+        0 0 16px rgba(168, 85, 247, 0.65),
+        0 0 38px rgba(126, 34, 206, 0.34),
+        0 16px 36px rgba(0, 0, 0, 0.4);
+    }
+
+    .sell-preview-card.rarity-r .sell-preview-img-wrap {
+      border: 2px solid #a855f7;
+      box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
+    }
+
+    .sell-preview-card.rarity-r .sell-preview-rarity-badge,
+    .sell-preview-card.rarity-r .sell-preview-rarity-text {
+      background: linear-gradient(135deg, #d8b4fe, #a855f7, #7e22ce);
+      border-color: rgba(233, 213, 255, 0.75);
+    }
+
+    .sell-preview-card.rarity-r .sell-preview-name {
+      color: #f3e8ff;
+      text-shadow: 0 0 8px rgba(168, 85, 247, 0.45);
+    }
+
+    .sell-preview-card.rarity-r .sell-preview-series {
+      color: #e9d5ff;
+    }
+
+    .sell-preview-card.rarity-a {
+      border-color: #38bdf8;
+      background:
+        linear-gradient(180deg, rgba(56, 189, 248, 0.22), rgba(15, 23, 42, 0.88)),
+        rgba(15, 23, 42, 0.82);
+      box-shadow:
+        0 0 16px rgba(56, 189, 248, 0.62),
+        0 0 38px rgba(2, 132, 199, 0.34),
+        0 16px 36px rgba(0, 0, 0, 0.4);
+    }
+
+    .sell-preview-card.rarity-a .sell-preview-img-wrap {
+      border: 2px solid #38bdf8;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+    }
+
+    .sell-preview-card.rarity-a .sell-preview-rarity-badge,
+    .sell-preview-card.rarity-a .sell-preview-rarity-text {
+      background: linear-gradient(135deg, #7dd3fc, #38bdf8, #0284c7);
+      border-color: rgba(186, 230, 253, 0.75);
+    }
+
+    .sell-preview-card.rarity-a .sell-preview-name {
+      color: #e0f2fe;
+      text-shadow: 0 0 8px rgba(56, 189, 248, 0.45);
+    }
+
+    .sell-preview-card.rarity-a .sell-preview-series {
+      color: #bae6fd;
+    }
+
+    .sell-preview-card.rarity-normal {
+      border-color: rgba(203, 213, 225, 0.55);
+      background: rgba(15, 23, 42, 0.78);
+      box-shadow:
+        0 0 10px rgba(203, 213, 225, 0.25),
+        0 14px 34px rgba(0, 0, 0, 0.36);
+    }
+
+    .sell-preview-card.rarity-normal .sell-preview-img-wrap {
+      border: 2px solid rgba(203, 213, 225, 0.45);
+    }
+
+    .sell-preview-img-wrap {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      border-radius: 20px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.08);
+      box-sizing: border-box;
+      flex-shrink: 0;
+    }
+
+    .sell-preview-img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .sell-preview-text {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      padding: 4px 2px 0;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    .sell-preview-name {
+      width: 100%;
+      font-size: 18px;
+      font-weight: 900;
+      line-height: 1.35;
+      color: #ffffff;
+      text-align: center;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+    .sell-preview-series {
+      margin-top: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.35;
+      color: #cbd5e1;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+    .sell-preview-rarity-text {
+      width: fit-content;
+      max-width: 100%;
+      margin: 10px auto 0;
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1.2;
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .sell-preview-empty,
+    .sell-preview-error {
+      width: 100%;
+      min-height: 220px;
+      padding: 24px 12px;
+      color: #cbd5e1;
+      font-size: 15px;
+      line-height: 1.6;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
+    .sell-preview-error {
+      color: #fecaca;
+    }
+
+    @media (max-width: 768px) {
+      .sell-card-preview {
+        min-height: 340px;
+        padding: 14px;
+      }
+
+      .sell-preview-card {
+        width: 220px;
+        padding: 14px;
+        border-radius: 22px;
+      }
+
+      .sell-preview-name {
+        font-size: 16px;
+      }
+
+      .sell-preview-series {
+        font-size: 12px;
+      }
+
+      .sell-preview-rarity-badge {
+        top: 10px;
+        right: 10px;
+        font-size: 12px;
+        padding: 5px 9px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .sell-preview-card {
+        width: 200px;
+      }
+
+      .sell-card-preview {
+        min-height: 310px;
+      }
+    }
+
+    .trade-preview-card .card-name {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 8px 6px 7px;
+      background: linear-gradient(to top, rgba(0,0,0,0.92), rgba(0,0,0,0.08));
+      z-index: 2;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    .trade-preview-card .card-name-chinese {
+      font-size: 0.8rem;
+      color: #00ffff;
+      font-weight: 800;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .trade-preview-card .card-name-english {
+      font-size: 0.68rem;
+      color: #ffd700;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .trade-preview-extra {
+      margin-top: 10px;
+      text-align: center;
+      color: #fff;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
     .trade-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fill, 180px);
+      gap: 16px;
       margin-top: 20px;
-      align-items: stretch;
+      justify-content: center;
+      align-items: start;
+    }
+
+    .trade-card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, 190px);
+      gap: 20px;
+      justify-content: center;
+      align-items: start;
+      width: 100%;
+    }
+
+    .trade-market-card {
+      width: 190px;
+      min-height: 410px;
+      border-radius: 22px;
+      overflow: hidden;
+      color: #fff;
+      background:
+        radial-gradient(circle at top, rgba(255, 255, 255, 0.12), transparent 42%),
+        linear-gradient(180deg, rgba(25, 31, 55, 0.98), rgba(8, 11, 24, 0.99));
+      border: 2px solid rgba(255, 255, 255, 0.16);
+      box-shadow:
+        0 14px 28px rgba(0, 0, 0, 0.34),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+      display: flex;
+      flex-direction: column;
+      transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease,
+        border-color 0.18s ease;
+    }
+
+    .trade-market-card:hover {
+      transform: translateY(-4px);
+      box-shadow:
+        0 18px 34px rgba(0, 0, 0, 0.42),
+        0 0 20px rgba(56, 189, 248, 0.16);
+    }
+
+    .trade-market-image-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.38);
+    }
+
+    .trade-market-image-wrap img,
+    .trade-market-image-wrap video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .trade-market-no-image {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      place-items: center;
+      color: rgba(255, 255, 255, 0.7);
+      font-weight: 900;
+      background:
+        linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.95));
+    }
+
+    .trade-market-rarity-badge {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      max-width: calc(100% - 16px);
+      padding: 5px 9px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.56);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      backdrop-filter: blur(6px);
+    }
+
+    .trade-market-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      padding: 12px;
+    }
+
+    .trade-market-card-name {
+      margin: 0;
+      min-height: 40px;
+      font-size: 16px;
+      line-height: 1.25;
+      font-weight: 900;
+      color: #fff;
+      text-align: center;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .trade-market-card-word {
+      min-height: 17px;
+      font-size: 12px;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.68);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .trade-market-meta,
+    .trade-market-price {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 7px 9px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .trade-market-meta span,
+    .trade-market-price span {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.68);
+    }
+
+    .trade-market-meta strong {
+      min-width: 0;
+      font-size: 13px;
+      color: #dff8ff;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .trade-market-price {
+      background: rgba(255, 215, 0, 0.13);
+      border: 1px solid rgba(255, 215, 0, 0.22);
+    }
+
+    .trade-market-price strong {
+      font-size: 15px;
+      color: #ffd700;
+      font-weight: 1000;
+    }
+
+    .trade-market-listing-date,
+    .trade-market-time-ago {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 5px 9px;
+      border-radius: 10px;
+      font-size: 11px;
+    }
+
+    .trade-market-listing-date {
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.18);
+    }
+
+    .trade-market-listing-date span {
+      color: rgba(255, 255, 255, 0.68);
+    }
+
+    .trade-market-listing-date .listing-date-value {
+      color: #7dd3fc;
+      font-weight: 600;
+    }
+
+    .trade-market-time-ago {
+      background: rgba(250, 204, 21, 0.12);
+      border: 1px solid rgba(250, 204, 21, 0.18);
+    }
+
+    .trade-market-time-ago span {
+      color: rgba(255, 255, 255, 0.68);
+    }
+
+    .trade-market-time-ago .time-ago-value {
+      color: #fde68a;
+      font-weight: 600;
+    }
+
+    .trade-market-actions {
+      margin-top: auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    .trade-market-actions button {
+      width: 100%;
+      min-height: 38px;
+      border: 0;
+      border-radius: 12px;
+      font-weight: 1000;
+      cursor: pointer;
+      transition:
+        transform 0.15s ease,
+        filter 0.15s ease,
+        opacity 0.15s ease;
+    }
+
+    .trade-market-actions button:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.04);
+    }
+
+    .trade-market-actions button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .trade-buy-btn,
+    .buy-trade-btn {
+      color: #1f2937;
+      background: linear-gradient(135deg, #facc15, #f97316);
+      box-shadow: 0 8px 16px rgba(250, 204, 21, 0.24);
+    }
+
+    .trade-offer-btn,
+    .make-offer-btn {
+      color: #fff;
+      background: linear-gradient(135deg, #7c3aed, #2563eb);
+      box-shadow: 0 8px 16px rgba(124, 58, 237, 0.24);
+    }
+
+    .trade-cancel-btn,
+    .cancel-trade-btn {
+      color: #fff;
+      background: linear-gradient(135deg, #ef4444, #be123c);
+      box-shadow: 0 8px 16px rgba(239, 68, 68, 0.22);
+    }
+
+    .trade-market-card.rarity-ssr,
+    .trade-card.rarity-ssr {
+      border-color: rgba(255, 215, 0, 0.95);
+      box-shadow:
+        0 0 18px rgba(255, 215, 0, 0.5),
+        0 14px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .trade-market-card.rarity-r,
+    .trade-card.rarity-r {
+      border-color: rgba(168, 85, 247, 0.95);
+      box-shadow:
+        0 0 18px rgba(168, 85, 247, 0.45),
+        0 14px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .trade-market-card.rarity-a,
+    .trade-card.rarity-a {
+      border-color: rgba(56, 189, 248, 0.95);
+      box-shadow:
+        0 0 18px rgba(56, 189, 248, 0.42),
+        0 14px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .trade-market-card.rarity-ssr .trade-market-rarity-badge {
+      color: #1f2937;
+      background: linear-gradient(135deg, #fde68a, #f59e0b);
+    }
+
+    .trade-market-card.rarity-r .trade-market-rarity-badge {
+      background: linear-gradient(135deg, #a855f7, #6d28d9);
+    }
+
+    .trade-market-card.rarity-a .trade-market-rarity-badge {
+      background: linear-gradient(135deg, #38bdf8, #0284c7);
+    }
+
+    .trade-market-empty {
+      grid-column: 1 / -1;
+      width: min(520px, 100%);
+      margin: 0 auto;
+      padding: 34px 20px;
+      border-radius: 24px;
+      text-align: center;
+      color: #fff;
+      background:
+        radial-gradient(circle at top, rgba(56, 189, 248, 0.18), transparent 42%),
+        rgba(255, 255, 255, 0.08);
+      border: 1px dashed rgba(255, 255, 255, 0.3);
+    }
+
+    .trade-market-empty-icon {
+      font-size: 46px;
+      margin-bottom: 10px;
+    }
+
+    .trade-market-empty h4 {
+      margin: 0;
+      font-size: 22px;
+      color: #fff;
+    }
+
+    .trade-market-empty p {
+      margin: 8px 0 0;
+      color: rgba(255, 255, 255, 0.72);
+      line-height: 1.6;
     }
 
     .trade-card {
       background: rgba(10, 20, 40, 0.88);
       border: 2px solid #ffd700;
       border-radius: 18px;
-      padding: 18px;
+      width: 180px;
+      min-width: 180px;
+      max-width: 180px;
       position: relative;
       overflow: hidden;
       backdrop-filter: blur(10px);
@@ -1780,10 +3265,7 @@
       transition: transform 0.25s ease, box-shadow 0.25s ease;
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      height: 450px;
-      min-height: 450px;
-      max-height: 450px;
+      box-sizing: border-box;
     }
 
     .trade-card::before {
@@ -1799,13 +3281,13 @@
 
     .trade-card-media {
       width: 100%;
-      height: 170px;
-      border-radius: 14px;
+      aspect-ratio: 3 / 4;
+      height: 240px;
+      border-radius: 14px 14px 0 0;
       overflow: hidden;
-      border: 2px solid rgba(255, 215, 0, 0.35);
+      border-bottom: 2px solid rgba(255, 215, 0, 0.18);
       box-shadow: 0 0 18px rgba(0, 255, 255, 0.15);
-      background: rgba(0,0,0,0.25);
-      margin-bottom: 14px;
+      background: rgba(255, 255, 255, 0.6);
       position: relative;
       flex-shrink: 0;
     }
@@ -1815,6 +3297,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center;
       display: block;
     }
 
@@ -1831,13 +3314,49 @@
       box-shadow: 0 12px 30px rgba(255, 215, 0, 0.22);
     }
 
+    .trade-card.rarity-a:hover {
+      box-shadow: 0 12px 30px var(--rarity-a-glow);
+    }
+
+    .trade-card.rarity-r:hover {
+      box-shadow: 0 12px 30px var(--rarity-r-glow);
+    }
+
+    .trade-card.rarity-ssr:hover {
+      box-shadow: 0 12px 30px var(--rarity-ssr-glow);
+    }
+
+    .rarity-ssr,
+    .rarity-超稀有 {
+      border-color: #ffd700 !important;
+      box-shadow:
+        0 0 18px rgba(255, 215, 0, 0.45),
+        0 12px 26px rgba(0, 0, 0, 0.35);
+    }
+
+    .rarity-r,
+    .rarity-稀有 {
+      border-color: #a855f7 !important;
+      box-shadow:
+        0 0 18px rgba(168, 85, 247, 0.42),
+        0 12px 26px rgba(0, 0, 0, 0.35);
+    }
+
+    .rarity-a,
+    .rarity-普通 {
+      border-color: #38bdf8 !important;
+      box-shadow:
+        0 0 18px rgba(56, 189, 248, 0.38),
+        0 12px 26px rgba(0, 0, 0, 0.35);
+    }
+
     .trade-card-title {
       color: #ffd700;
-      font-size: 1.25rem;
+      font-size: 15px;
       font-weight: 800;
       margin-bottom: 6px;
       text-shadow: 0 0 10px rgba(255, 215, 0, 0.35);
-      line-height: 1.25;
+      line-height: 1.3;
       display: -webkit-box;
       display: box;
       -webkit-line-clamp: 2;
@@ -1846,15 +3365,15 @@
       box-orient: vertical;
       overflow: hidden;
       text-overflow: ellipsis;
-      max-height: 2.5rem;
-      min-height: 1.25rem;
+      min-height: 40px;
+      max-height: 40px;
       flex-shrink: 0;
     }
 
     .trade-card-subtitle {
       color: #00ffff;
-      font-size: 0.95rem;
-      margin-bottom: 12px;
+      font-size: 13px;
+      margin-bottom: 10px;
       opacity: 0.95;
       font-family: 'Roboto Mono', 'Orbitron', monospace;
       letter-spacing: 0.5px;
@@ -1866,39 +3385,69 @@
       box-orient: vertical;
       overflow: hidden;
       text-overflow: ellipsis;
-      max-height: 1.14rem;
-      min-height: 0.95rem;
+      max-height: 18px;
+      min-height: 18px;
       flex-shrink: 0;
+    }
+
+    .trade-card-price {
+      color: #ffe27a;
+      font-size: 14px;
+      font-weight: 800;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 10px;
+    }
+
+    .trade-card-info {
+      padding: 10px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      flex: 1 1 auto;
+      min-height: 0;
     }
 
     .trade-card-meta {
       display: flex;
       justify-content: space-between;
-      gap: 10px;
+      gap: 8px;
       flex-wrap: wrap;
-      margin-bottom: 14px;
+      margin-bottom: 10px;
       color: #ddd;
-      font-size: 0.9rem;
+      font-size: 14px;
       flex-shrink: 0;
     }
 
     .trade-card-meta span {
       background: rgba(0, 0, 0, 0.25);
       border: 1px solid rgba(255, 215, 0, 0.25);
-      padding: 6px 10px;
-      border-radius: 999px;
+      padding: 6px 8px;
+      border-radius: 10px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
     }
 
     .trade-controls {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
       margin-top: auto;
-      padding-top: 10px;
+      padding: 0 10px 10px;
       border-top: 1px solid rgba(255, 215, 0, 0.18);
       flex-shrink: 0;
+      box-sizing: border-box;
+    }
+
+    .trade-controls button {
+      width: 100%;
+      min-height: 38px;
+      border-radius: 10px;
+      font-weight: 700;
+      box-sizing: border-box;
     }
 
     .price-input {
@@ -1940,13 +3489,109 @@
     }
 
     @media (max-width: 768px) {
-      .trade-grid {
+      .shop-trade-center {
+        width: 94%;
+        padding: 14px;
+        border-radius: 22px;
+      }
+
+      .trade-center-hero {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+      }
+
+      .trade-center-stars {
+        width: 100%;
+      }
+
+      .trade-center-tabs {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .trade-tab-btn {
+        min-width: 0;
+      }
+
+      .trade-list-layout,
+      .market-sell-panel,
+      .sell-section {
         grid-template-columns: 1fr;
-        gap: 16px;
+      }
+
+      .trade-selected-card-preview,
+      .sell-card-preview {
+        min-height: 280px;
+        padding: 12px;
+      }
+
+      .sell-preview-card {
+        width: 200px;
+        padding: 12px;
+      }
+
+      .sell-preview-name {
+        font-size: 15px;
+      }
+
+      .sell-preview-info {
+        font-size: 12px;
+      }
+
+      .trade-grid,
+      .trade-card-grid {
+        grid-template-columns: repeat(2, 160px);
+        gap: 14px;
+        justify-content: center;
+      }
+
+      .trade-market-card {
+        width: 160px;
+        min-height: 372px;
+        border-radius: 18px;
+      }
+
+      .trade-market-info {
+        padding: 10px;
+        gap: 6px;
+      }
+
+      .trade-market-card-name {
+        font-size: 14px;
+        min-height: 36px;
+      }
+
+      .trade-market-card-word {
+        font-size: 11px;
+      }
+
+      .trade-market-price strong {
+        font-size: 14px;
+      }
+
+      .trade-market-actions button {
+        min-height: 36px;
+        font-size: 13px;
+      }
+
+      .trade-card {
+        width: 160px;
+        min-width: 160px;
+        max-width: 160px;
       }
 
       .trade-card-media {
-        height: 190px;
+        height: 214px;
+      }
+
+      .trade-card-title {
+        font-size: 14px;
+      }
+
+      .trade-card-subtitle,
+      .trade-card-meta {
+        font-size: 12px;
       }
 
       .price-input {
@@ -1960,6 +3605,38 @@
       }
     }
 
+    @media (max-width: 380px) {
+      .trade-grid,
+      .trade-card-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .trade-card,
+      .market-card,
+      .selling-card,
+      .trade-market-card {
+        width: min(240px, 100%);
+        margin: 0 auto;
+      }
+
+      .trade-center-tabs {
+        grid-template-columns: 1fr;
+      }
+
+      .trade-chat-message {
+        max-width: 92%;
+      }
+
+      .trade-chat-form {
+        flex-direction: column;
+      }
+
+      .trade-chat-form button {
+        width: 100%;
+        min-height: 42px;
+      }
+    }
+
     .trade-empty {
       text-align: center;
       color: rgba(255,255,255,0.7);
@@ -1967,6 +3644,30 @@
       background: rgba(10, 20, 40, 0.55);
       border: 2px dashed rgba(0, 255, 255, 0.35);
       border-radius: 16px;
+    }
+
+    .trade-empty-card {
+      grid-column: 1 / -1;
+      padding: 32px 18px;
+      border-radius: 20px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px dashed rgba(255, 255, 255, 0.28);
+    }
+
+    .trade-empty-icon {
+      font-size: 42px;
+      margin-bottom: 8px;
+    }
+
+    .trade-empty-card h4 {
+      margin: 0;
+      color: #fff;
+      font-size: 20px;
+    }
+
+    .trade-empty-card p {
+      color: rgba(255, 255, 255, 0.72);
     }
 
     /* 議價按鈕樣式 */
@@ -2029,8 +3730,6 @@
     </div>
     <div class="header-actions">
       <button class="btn" onclick="location.href='cards.html'">📁 卡片倉庫</button>
-      <button class="btn" onclick="location.href='gacha.html'">🎰 抽卡</button>
-      <button class="btn" onclick="location.href='google_sheets_form.html'">📬 信箱</button>
       <button class="btn" onclick="location.href='index.html'">🏠 首頁</button>
     </div>
   </header>
@@ -2047,16 +3746,26 @@
     <!-- 邀請碼兌換 -->
     <div id="invite-shop" class="shop-section">
       <div class="invite-code-section">
-        <h3>🎫 邀請碼兌換</h3>
-        <p>輸入邀請碼即可獲得對應數量的星星！</p>
+        <h3>🎫 優惠碼兌換</h3>
+        <p>輸入優惠碼即可獲得對應數量的星星！</p>
         <div class="invite-input-group">
-          <input type="text" id="inviteCodeInput" placeholder="請輸入邀請碼" maxlength="9">
+          <input type="text" id="inviteCodeInput" placeholder="請輸入優惠碼" maxlength="20">
           <button class="invite-btn" onclick="ShopSystem.redeemInviteCode()">兌換</button>
         </div>
         <div class="invite-info">
-          <p>💡 邀請碼格式：7-9位英數字組合</p>
+          <p>💡 支援一般邀請碼與套卡完成優惠碼</p>
           <p>🎁 可兌換星星數量：100、300、500、1000、5000、10000顆</p>
-          <p id="usedCodesInfo">📊 已使用邀請碼：0 個</p>
+          <p id="usedCodesInfo">📊 已使用優惠碼：0 個</p>
+        </div>
+      </div>
+
+      <!-- 套卡完成優惠碼 -->
+      <div class="series-reward-section" style="margin-top: 40px; padding: 30px; background: rgba(10, 20, 40, 0.85); border: 2px solid #ffd700; border-radius: 20px;">
+        <h3 style="color: #ffd700; text-align: center; margin-bottom: 20px; text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);">🏆 套卡完成優惠碼</h3>
+        <p style="color: #ccc; text-align: center; margin-bottom: 20px;">收集完整系列卡片後，系統會自動產生優惠碼</p>
+        <div id="seriesRewardCodesContainer" class="series-reward-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;"></div>
+        <div id="noSeriesReward" style="text-align: center; color: rgba(255, 255, 255, 0.5); padding: 20px; display: none;">
+          尚未完成任何系列套卡
         </div>
       </div>
     </div>
@@ -2072,64 +3781,107 @@
 
     <!-- 卡片交易 -->
     <div id="trade-shop" class="shop-section" style="display:none;">
-      <div class="trade-section">
-        <h3>🤝 卡片交易所</h3>
-        <p>你可以把已解鎖的 <b style="color:#ffd700;">SSR（超稀有）</b> 卡片拿來出售，換取星星。</p>
-        <p class="trade-hint">💡 提示：點擊「議價」按鈕與商店老板討價還價，爭取更好的價格！</p>
-        <div id="tradeGrid" class="trade-grid"></div>
-      </div>
-    </div>
+      <section class="shop-trade-center" id="shopTradeCenter">
+        <div class="trade-center-hero">
+          <div>
+            <span class="trade-center-kicker">Card Market</span>
+            <h2>卡片交易所</h2>
+            <p>玩家可以在這裡上架卡片、購買卡片、查看出售狀態與議價紀錄。</p>
+          </div>
 
-    <!-- 議價彈窗 -->
-    <div id="bargainModal" class="bargain-modal">
-      <div class="bargain-content">
-        <div id="shopkeeperAvatar" class="shopkeeper-mood neutral">
-          <img src="img/shop boss.png" alt="商店老板" />
-        </div>
-        <div class="bargain-title">💬 議價時間</div>
-        <div class="bargain-card-preview">
-          <div id="bargainCardName" class="bargain-card-name">-</div>
-          <div id="bargainCardRarity" class="bargain-card-rarity">SSR / 超稀有</div>
-        </div>
-        <div id="shopkeeperDialogue" class="shopkeeper-dialogue">
-          歡迎光臨！讓我看看你的卡片...
-        </div>
-        <div class="price-evaluation">
-          <div class="price-tag market">
-            <div class="label">市場價</div>
-            <div id="marketPrice" class="value">⭐ 200</div>
-          </div>
-          <div class="price-tag player">
-            <div class="label">你的出價</div>
-            <div id="playerPrice" class="value">⭐ -</div>
-          </div>
-          <div class="price-tag shopkeeper" id="shopkeeperPriceTag" style="display:none;">
-            <div class="label">老板還價</div>
-            <div id="shopkeeperPrice" class="value">⭐ -</div>
+          <div class="trade-center-stars">
+            <span>我的星星</span>
+            <strong data-player-stars>0</strong>
           </div>
         </div>
-        <div class="price-proposal">
-          <label>💰 開價：</label>
-          <input type="number" id="bargainPriceInput" min="1" value="200" />
-          <span style="color:#ffd700;">⭐</span>
+
+        <div class="trade-center-tabs">
+          <button class="trade-tab-btn active" data-trade-tab="list">我要上架</button>
+          <button class="trade-tab-btn" data-trade-tab="market">交易市場</button>
+          <button class="trade-tab-btn" data-trade-tab="selling">我的出售</button>
+          <button class="trade-tab-btn" data-trade-tab="income">賣家收益</button>
         </div>
-        <div class="quick-price-tags">
-          <span class="quick-price-tag" onclick="ShopSystem.setBargainPrice(100)">100</span>
-          <span class="quick-price-tag" onclick="ShopSystem.setBargainPrice(150)">150</span>
-          <span class="quick-price-tag" onclick="ShopSystem.setBargainPrice(200)">200</span>
-          <span class="quick-price-tag" onclick="ShopSystem.setBargainPrice(250)">250</span>
-          <span class="quick-price-tag" onclick="ShopSystem.setBargainPrice(300)">300</span>
+
+        <div class="trade-tab-panels">
+
+          <section class="trade-panel active" data-trade-panel="list">
+            <div class="trade-panel-header">
+              <h3>我要上架卡片</h3>
+              <p>選擇自己的卡片，設定星星價格後上架。</p>
+            </div>
+
+            <div class="trade-list-card-panel">
+              <div class="trade-list-layout">
+                <div class="trade-list-form">
+                  <label for="sellCardSelect">選擇卡片</label>
+                  <select id="sellCardSelect">
+                    <option value="">請選擇要出售的卡片</option>
+                  </select>
+
+                  <label for="sellPriceInput">出售價格</label>
+                  <input id="sellPriceInput" type="number" min="1" step="1" placeholder="請輸入出售價格">
+
+                  <button id="submitTradeCardBtn" type="button">上架出售</button>
+                </div>
+                <div id="sellCardPreview" class="trade-selected-card-preview"></div>
+              </div>
+            </div>
+            <div id="tradeStatusMessage" class="trade-empty" style="display:none;"></div>
+          </section>
+
+          <section class="trade-panel" data-trade-panel="market">
+            <div class="trade-panel-header">
+              <h3>交易市場</h3>
+              <p>查看其他玩家正在出售的卡片。</p>
+            </div>
+
+            <div id="tradeGrid" class="trade-card-grid"></div>
+          </section>
+
+          <section class="trade-panel" data-trade-panel="selling">
+            <div class="trade-panel-header">
+              <h3>我的出售中</h3>
+              <p>查看自己目前上架的卡片。</p>
+            </div>
+
+            <div id="myTradeGrid" class="trade-card-grid"></div>
+          </section>
+
+          <section class="trade-panel" data-trade-panel="income">
+            <div class="trade-panel-header">
+              <h3>賣家收益中心</h3>
+              <p>查看已售出卡片的待領取星星。</p>
+            </div>
+
+            <div class="seller-income-summary">
+              <div class="income-summary-card">
+                <span class="summary-label">待領取星星</span>
+                <strong id="pendingClaimStars">0</strong>
+              </div>
+
+              <div class="income-summary-card">
+                <span class="summary-label">待領取筆數</span>
+                <strong id="pendingClaimCount">0</strong>
+              </div>
+            </div>
+
+            <div class="seller-income-actions">
+              <button id="refreshSellerIncomeBtn" type="button">
+                重新讀取收益
+              </button>
+
+              <button id="claimAllStarsBtn" type="button" disabled>
+                一鍵領取全部
+              </button>
+            </div>
+
+            <div id="sellerIncomeList" class="seller-income-list">
+              <p class="empty-text">尚未讀取收益資料。</p>
+            </div>
+          </section>
+
         </div>
-        <div id="bargainHistory" class="bargain-history" style="display:none;">
-          <div class="bargain-history-title">📜 議價記錄</div>
-          <div id="bargainHistoryList"></div>
-        </div>
-        <div class="bargain-buttons">
-          <button id="bargainOfferBtn" class="bargain-btn counter" onclick="ShopSystem.makeOffer()">開價</button>
-          <button id="bargainAcceptBtn" class="bargain-btn accept" onclick="ShopSystem.acceptDeal()" style="display:none;">成交</button>
-          <button id="bargainDeclineBtn" class="bargain-btn decline" onclick="ShopSystem.closeBargain()">離開</button>
-        </div>
-      </div>
+      </section>
     </div>
 
     <!-- 邀請碼管理（需要 ?admin=1 才會顯示標籤） -->
@@ -2197,6 +3949,7 @@
   <script src="js/starRewardSystem.js"></script>
   <script src="js/cardUtils.js"></script>
   <script src="js/cards.js"></script>
+  <script src="js/googleSheetApi.js"></script>
   <script src="js/achievementSystem.js"></script>
 
   <script>
@@ -2206,24 +3959,766 @@
       inviteCodes: [],
       adminDraftCodes: [],
       adminMode: false,
+      currentTradeMarket: [],
+      currentMyOrders: [],
+      currentSellerOrders: [],
+      currentPlayerStars: 0,
+      sellableCards: [],
+      selectedSellCard: null,
 
       // 初始化商城系統
       init() {
         console.log('商城系統初始化中...');
-        
-        this.updateStarsDisplay();
+
+        // 先讀取本地星星
+        const localStars = this.getLocalPlayerStars();
+        this.currentPlayerStars = localStars;
+        this.updateStarsDisplay(localStars);
+
         this.loadInviteCodes();
         this.setupEventListeners();
         this.initAdminMode();
+        this.ensureTradeIdentity();
+        this.setupTradeListPanel();
         this.renderTradeShop();
-        
+
         // 延遲更新統計信息，等待邀請碼載入完成
         setTimeout(() => {
           this.updateUsedCodesInfo();
           this.updateAdminStats();
+          this.checkAndUpdateSeriesCompletion();
         }, 1000);
-        
+
         console.log('商城系統初始化完成');
+      },
+
+      ensureTradeIdentity() {
+        if (window.GoogleSheetTradeApi) {
+          window.GoogleSheetTradeApi.getOrCreatePlayerId();
+        }
+      },
+
+      getCurrentPlayerId() {
+        if (window.GoogleSheetTradeApi) {
+          return window.GoogleSheetTradeApi.getOrCreatePlayerId();
+        }
+        return localStorage.getItem('playerId') || '';
+      },
+
+      getCurrentPlayerName() {
+        if (window.GoogleSheetTradeApi) {
+          return window.GoogleSheetTradeApi.getCurrentPlayerName();
+        }
+        return localStorage.getItem('playerName') || '玩家';
+      },
+
+      getLocalPlayerStars() {
+        // 優先讀取 totalStars（與其他頁面同步），如果沒有則讀取 playerStars
+        const totalStars = Number(localStorage.getItem('totalStars') || 0);
+        const playerStars = Number(localStorage.getItem('playerStars') || 0);
+        const stars = totalStars > 0 ? totalStars : playerStars;
+        return Number.isFinite(stars) && stars >= 0 ? Math.floor(stars) : 0;
+      },
+
+      saveLocalPlayerStars(stars) {
+        const value = Number.isFinite(Number(stars)) && Number(stars) >= 0 ? Math.floor(Number(stars)) : 0;
+        // 同時保存到 totalStars 和 playerStars 以確保跨頁面同步
+        localStorage.setItem('totalStars', String(value));
+        if (window.GoogleSheetTradeApi && typeof window.GoogleSheetTradeApi.saveLocalPlayerStars === 'function') {
+          window.GoogleSheetTradeApi.saveLocalPlayerStars(value);
+        } else {
+          localStorage.setItem('playerStars', String(value));
+        }
+        this.currentPlayerStars = value;
+        return value;
+      },
+
+      async refreshPlayerStars() {
+        try {
+          if (window.GoogleSheetTradeApi && typeof window.GoogleSheetTradeApi.getPlayerBalance === 'function') {
+            const result = await window.GoogleSheetTradeApi.getPlayerBalance();
+            if (result && result.success && typeof result.stars === 'number' && result.stars > 0) {
+              const stars = this.saveLocalPlayerStars(result.stars);
+              this.updateStarsDisplay(stars);
+              return stars;
+            }
+          }
+        } catch (error) {
+          console.warn('讀取星星失敗，使用本機快取', error);
+        }
+
+        const localStars = this.getLocalPlayerStars();
+        this.currentPlayerStars = localStars;
+        this.updateStarsDisplay(localStars);
+        return localStars;
+      },
+
+      async ensureTradeCloudReady() {
+        if (!window.GoogleSheetTradeApi) {
+          throw new Error('找不到 Google Sheet 交易模組');
+        }
+
+        await window.GoogleSheetTradeApi.ensurePlayerProfile();
+      },
+
+      setTradeStatus(message, isError = false) {
+        const box = document.getElementById('tradeStatusMessage');
+        if (!box) return;
+
+        if (!message) {
+          box.style.display = 'none';
+          box.textContent = '';
+          return;
+        }
+
+        box.style.display = 'block';
+        box.textContent = message;
+        box.style.color = isError ? '#ff8f8f' : '#fff';
+        box.style.borderColor = isError ? 'rgba(255,107,107,0.45)' : 'rgba(0,255,255,0.25)';
+      },
+
+      createTradeCardMedia(item) {
+        const mediaUrl = String(item.imageUrl || item.image || '');
+        if (!mediaUrl) {
+          return '<div style="height:100%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.7);">無圖片</div>';
+        }
+
+        const isMp4 = mediaUrl.toLowerCase().endsWith('.mp4');
+        return isMp4
+          ? `<video src="${mediaUrl}" autoplay loop muted playsinline></video>`
+          : `<img src="${mediaUrl}" alt="${String(item.cardName || '')}">`;
+      },
+
+      getCardRarity(card) {
+        return String(
+          card.rarity ||
+          card.rank ||
+          card.type ||
+          card.level ||
+          card.star ||
+          'NORMAL'
+        ).trim().toUpperCase();
+      },
+
+      getRarityClass(rarity) {
+        const value = String(rarity || '').trim().toUpperCase();
+        if (value === 'SSR' || value === '超稀有' || value.includes('SSR')) return 'rarity-ssr';
+        if (value === 'R' || value === '稀有' || value.includes('R')) return 'rarity-r';
+        if (value === 'A' || value === '普通' || value.includes('A')) return 'rarity-a';
+        return 'rarity-normal';
+      },
+
+      renderTradeEmpty(targetId, message) {
+        const target = document.getElementById(targetId);
+        if (!target) return;
+        target.innerHTML = `<div class="trade-empty">${this.escapeHTML(message)}</div>`;
+      },
+
+      setupTradeListPanel() {
+        const select = document.getElementById('sellCardSelect');
+        const button = document.getElementById('submitTradeCardBtn');
+
+        if (select) {
+          select.addEventListener('change', () => {
+            this.handleTradeCardSelection(select.value);
+          });
+        }
+
+        if (button) {
+          button.addEventListener('click', () => {
+            this.submitTradeCard();
+          });
+        }
+
+        this.renderTradeCardPreview();
+        this.waitForCardsThenRenderSellOptions();
+      },
+
+      getAllCardSource() {
+        return Array.isArray(window.allCards) && window.allCards.length
+          ? window.allCards
+          : (Array.isArray(window.baseCards) ? window.baseCards : []);
+      },
+
+      getCardImage(card) {
+        if (!card || typeof card !== 'object') return '';
+        const url = card.image || card.imageUrl || card.img || card.url || card.cardImage || card.src || '';
+        return this.cleanImageUrl(url);
+      },
+
+      cleanImageUrl(url) {
+        if (!url) return '';
+        return String(url)
+          .trim()
+          .replace(/^['"]+|['"]+$/g, '')
+          .replace(/['"]>$/g, '')
+          .replace(/\\['"]/g, '');
+      },
+
+      escapeHTML(str) {
+        if (!str) return '';
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      },
+
+      getPlayerOwnedCards() {
+        const keys = ['ownedCards', 'playerCards', 'unlockedCards', 'cardCollection', 'myCards'];
+        const allCards = this.getAllCardSource();
+        const listedCards = this.getLocalListedCardsForSell();
+        let ownedCards = [];
+
+        for (const key of keys) {
+          const raw = localStorage.getItem(key);
+          if (!raw) continue;
+
+          try {
+            const data = JSON.parse(raw);
+
+            if (Array.isArray(data)) {
+              ownedCards = data.map(item => {
+                if (typeof item === 'string') {
+                  return allCards.find(card => card.word === item || card.zh === item || String(card.id) === String(item));
+                }
+                if (item && typeof item === 'object') {
+                  const refKey = item.word || item.zh || item.cardWord || item.id;
+                  return allCards.find(card => card.word === refKey || card.zh === refKey || String(card.id) === String(refKey)) || item;
+                }
+                return null;
+              }).filter(Boolean);
+            } else if (data && typeof data === 'object') {
+              ownedCards = Object.entries(data).flatMap(([ownedKey, value]) => {
+                let count = 0;
+                if (typeof value === 'number') count = value;
+                else if (value === true) count = 1;
+                else if (value && typeof value === 'object') count = Number(value.count || value.quantity || value.amount || 1);
+
+                if (count <= 0) return [];
+
+                const cardData = allCards.find(card =>
+                  card.word === ownedKey ||
+                  card.zh === ownedKey ||
+                  String(card.id) === String(ownedKey)
+                );
+
+                if (!cardData) return [];
+                return Array.from({ length: count }, () => cardData);
+              });
+            }
+
+            if (ownedCards.length) {
+              break;
+            }
+          } catch (error) {
+            console.warn('玩家卡片資料解析失敗 key=', key, error);
+          }
+        }
+
+        const sellableOwned = ownedCards.filter(card => {
+          if (!card) return false;
+          return !(
+            listedCards[card.word] ||
+            listedCards[card.zh] ||
+            listedCards[String(card.id)]
+          );
+        });
+
+        console.log('玩家擁有卡片：', ownedCards);
+        console.log('已上架卡片：', listedCards);
+        console.log('可出售卡片：', sellableOwned);
+
+        return sellableOwned;
+      },
+
+      getLocalOwnedCardsForSell() {
+        const raw = localStorage.getItem('ownedCards');
+        if (!raw) {
+          console.warn('找不到 ownedCards');
+          return {};
+        }
+
+        try {
+          const data = JSON.parse(raw);
+          const result = {};
+
+          if (Array.isArray(data)) {
+            data.forEach(item => {
+              const key = typeof item === 'string'
+                ? item
+                : item.word || item.zh || item.cardWord || item.id;
+
+              if (key) {
+                result[key] = (result[key] || 0) + 1;
+              }
+            });
+            console.log('本地可讀取 ownedCards=', result);
+            return result;
+          }
+
+          if (data && typeof data === 'object') {
+            Object.entries(data).forEach(([key, value]) => {
+              if (typeof value === 'number') {
+                if (value > 0) result[key] = value;
+              } else if (value === true) {
+                result[key] = 1;
+              } else if (value && typeof value === 'object') {
+                const count = Number(value.count || value.quantity || value.amount || 1);
+                if (count > 0) result[key] = count;
+              }
+            });
+          }
+
+          console.log('本地可讀取 ownedCards=', result);
+          return result;
+        } catch (error) {
+          console.error('ownedCards 解析失敗', error);
+          return {};
+        }
+      },
+
+      findCardDataByAnyKey(cardKey) {
+        const allCards = this.getAllCardSource();
+        return allCards.find(card =>
+          card.word === cardKey ||
+          card.zh === cardKey ||
+          String(card.id) === String(cardKey)
+        );
+      },
+
+      getLocalListedCardsForSell() {
+        try {
+          return JSON.parse(localStorage.getItem('listedCards') || '{}');
+        } catch (error) {
+          return {};
+        }
+      },
+
+      isCardAlreadyListedForSell(cardKey, cardData) {
+        const listedCards = this.getLocalListedCardsForSell();
+        return Boolean(
+          listedCards[cardKey] ||
+          listedCards[cardData?.word] ||
+          listedCards[cardData?.zh] ||
+          listedCards[String(cardData?.id)]
+        );
+      },
+
+      getSellableCards() {
+        const ownedCards = this.getLocalOwnedCardsForSell();
+        const result = [];
+
+        Object.entries(ownedCards).forEach(([cardKey, count]) => {
+          if (!count || count <= 0) return;
+
+          const cardData = this.findCardDataByAnyKey(cardKey);
+
+          if (!cardData) {
+            console.warn('ownedCards 有卡，但 allCards 找不到資料：', cardKey);
+            return;
+          }
+
+          if (this.isCardAlreadyListedForSell(cardKey, cardData)) {
+            console.log('已上架，排除：', cardKey);
+            return;
+          }
+
+          result.push({
+            ...cardData,
+            cardId: cardData.word || cardKey,
+            cardName: cardData.zh || cardData.word || cardKey,
+            imageUrl: cardData.image || '',
+            quantity: count,
+            count
+          });
+        });
+
+        console.log('可上架卡片數量=', result.length, result);
+        return result;
+      },
+
+      deductOwnedCardAfterSell(cardWord) {
+        const raw = localStorage.getItem('ownedCards');
+        if (!raw) return;
+
+        const owned = JSON.parse(raw);
+        const cardData = this.findCardDataByAnyKey(cardWord);
+
+        const keys = [
+          cardWord,
+          cardData?.word,
+          cardData?.zh,
+          String(cardData?.id)
+        ].filter(Boolean);
+
+        for (const key of keys) {
+          if (owned[key] !== undefined) {
+            if (typeof owned[key] === 'number') {
+              owned[key] -= 1;
+              if (owned[key] <= 0) delete owned[key];
+            } else if (owned[key] === true) {
+              delete owned[key];
+            } else if (owned[key] && typeof owned[key] === 'object') {
+              owned[key].count = Number(owned[key].count || 1) - 1;
+              if (owned[key].count <= 0) delete owned[key];
+            }
+
+            localStorage.setItem('ownedCards', JSON.stringify(owned));
+            console.log('上架後已扣除 ownedCards：', key);
+            return;
+          }
+        }
+      },
+
+      async loadSellableCards() {
+        console.log('ownedCards raw=', localStorage.getItem('ownedCards'));
+        console.log('listedCards raw=', localStorage.getItem('listedCards'));
+        console.log('allCards length=', window.allCards?.length);
+        this.sellableCards = this.getSellableCards();
+        console.log('sellableCards=', this.sellableCards);
+        this.renderSellCardSelect();
+      },
+
+      waitForCardsThenRenderSellOptions(retry = 0) {
+        if ((window.allCards && window.allCards.length > 0) || (window.baseCards && window.baseCards.length > 0)) {
+          this.loadSellableCards();
+          return;
+        }
+
+        if (retry > 30) {
+          console.error('cards.js 載入失敗，無法產生上架清單');
+          this.loadSellableCards();
+          return;
+        }
+
+        setTimeout(() => this.waitForCardsThenRenderSellOptions(retry + 1), 100);
+      },
+
+      renderSellCardSelect() {
+        const select = document.getElementById('sellCardSelect');
+        if (!select) {
+          console.warn('找不到 sellCardSelect');
+          return;
+        }
+
+        const currentValue = this.selectedSellCard ? String(this.selectedSellCard.id || this.selectedSellCard.cardId || this.selectedSellCard.word) : '';
+        const ownedCards = this.getPlayerOwnedCards();
+        const groupedMap = new Map();
+
+        ownedCards.forEach(card => {
+          const key = String(card.id || card.word || card.zh);
+          if (!groupedMap.has(key)) {
+            groupedMap.set(key, { ...card, count: 0 });
+          }
+          groupedMap.get(key).count += 1;
+        });
+
+        this.sellableCards = Array.from(groupedMap.values());
+
+        select.innerHTML = '<option value="">請選擇要出售的卡片</option>';
+
+        if (!this.sellableCards.length) {
+          const option = document.createElement('option');
+          option.value = '';
+          option.textContent = '沒有可上架卡片，請先抽卡或檢查卡片資料';
+          option.disabled = true;
+          select.appendChild(option);
+          this.selectedSellCard = null;
+          this.renderTradeCardPreview();
+          return;
+        }
+
+        this.sellableCards.forEach(card => {
+          const option = document.createElement('option');
+          option.value = String(card.id || card.word || card.cardId);
+          option.textContent = `${this.escapeHTML(card.zh || card.word || card.cardName)}｜${this.escapeHTML(card.category || '未分類')}｜${this.escapeHTML(card.rarity || '普通')}`;
+          select.appendChild(option);
+        });
+
+        if (currentValue && this.sellableCards.find(card => String(card.id || card.cardId || card.word) === currentValue)) {
+          select.value = currentValue;
+        } else {
+          this.selectedSellCard = null;
+          select.value = '';
+        }
+
+        this.renderTradeCardPreview();
+      },
+
+      renderTradeCardSelect() {
+        this.renderSellCardSelect();
+      },
+
+      handleTradeCardSelection(cardId) {
+        this.selectedSellCard = this.sellableCards.find(card => String(card.id || card.word || card.cardId) === String(cardId)) || null;
+        this.renderSelectedCardPreview(cardId);
+      },
+
+      renderSelectedCardPreview(cardId) {
+        const preview = document.getElementById('sellCardPreview');
+        if (!preview) return;
+
+        preview.replaceChildren();
+
+        if (!cardId) {
+          const empty = document.createElement('div');
+          empty.className = 'sell-preview-empty';
+          empty.textContent = '選擇卡片後，這裡會顯示卡片預覽。';
+          preview.appendChild(empty);
+          return;
+        }
+
+        const selectedCard = this.sellableCards.find(card => String(card.id || card.word || card.cardId) === String(cardId))
+          || this.findCardDataByAnyKey(cardId)
+          || this.getAllCardSource().find(card => String(card.id || card.word || card.zh) === String(cardId));
+
+        console.log('目前選到的卡片ID：', cardId);
+        console.log('完整卡片資料：', selectedCard);
+
+        if (!selectedCard) {
+          const error = document.createElement('div');
+          error.className = 'sell-preview-error';
+          error.textContent = '找不到卡片資料';
+          preview.appendChild(error);
+          return;
+        }
+
+        const imageUrl = this.getCardImage(selectedCard);
+        console.log('卡片圖片網址：', imageUrl);
+
+        const rarity = this.getCardRarity(selectedCard);
+        const rarityClass = this.getRarityClass(selectedCard.rarity);
+        console.log('卡片稀有度：', rarity);
+        console.log('套用外框 class：', rarityClass);
+
+        const cardBox = document.createElement('div');
+        cardBox.className = `sell-preview-card ${rarityClass}`;
+
+        const badge = document.createElement('div');
+        badge.className = 'sell-preview-rarity-badge';
+        badge.textContent = rarity;
+
+        const imgWrap = document.createElement('div');
+        imgWrap.className = 'sell-preview-img-wrap';
+
+        if (imageUrl) {
+          const isVideo = /\.(mp4|webm)$/i.test(String(imageUrl));
+          if (isVideo) {
+            const video = document.createElement('video');
+            video.className = 'sell-preview-img';
+            video.src = imageUrl;
+            video.muted = true;
+            video.loop = true;
+            video.playsInline = true;
+            video.autoplay = true;
+            video.onerror = function () {
+              imgWrap.innerHTML = '';
+              const errorText = document.createElement('div');
+              errorText.className = 'sell-preview-error';
+              errorText.textContent = '圖片無法載入';
+              imgWrap.appendChild(errorText);
+            };
+            imgWrap.appendChild(video);
+          } else {
+            const img = document.createElement('img');
+            img.className = 'sell-preview-img';
+            img.src = imageUrl;
+            img.alt = selectedCard.zh || selectedCard.word || selectedCard.cardName || '卡片圖片';
+            img.onerror = function () {
+              imgWrap.innerHTML = '';
+              const errorText = document.createElement('div');
+              errorText.className = 'sell-preview-error';
+              errorText.textContent = '圖片無法載入';
+              imgWrap.appendChild(errorText);
+            };
+            imgWrap.appendChild(img);
+          }
+        } else {
+          const noImg = document.createElement('div');
+          noImg.className = 'sell-preview-error';
+          noImg.textContent = '圖片無法載入';
+          imgWrap.appendChild(noImg);
+        }
+
+        const textBox = document.createElement('div');
+        textBox.className = 'sell-preview-text';
+
+        const name = document.createElement('div');
+        name.className = 'sell-preview-name';
+        name.textContent = selectedCard.zh || selectedCard.word || selectedCard.cardName || '未命名卡片';
+
+        const series = document.createElement('div');
+        series.className = 'sell-preview-series';
+        series.textContent = selectedCard.category || selectedCard.series || selectedCard.theme || '未分類系列';
+
+        const rarityText = document.createElement('div');
+        rarityText.className = 'sell-preview-rarity-text';
+        rarityText.textContent = `稀有度：${rarity}`;
+
+        textBox.appendChild(name);
+        textBox.appendChild(series);
+        textBox.appendChild(rarityText);
+
+        cardBox.appendChild(badge);
+        cardBox.appendChild(imgWrap);
+        cardBox.appendChild(textBox);
+
+        preview.appendChild(cardBox);
+      },
+
+      renderTradeCardPreview() {
+        this.renderSelectedCardPreview(this.selectedSellCard ? String(this.selectedSellCard.id || this.selectedSellCard.word || this.selectedSellCard.cardId) : '');
+      },
+
+      // 格式化上架日期
+      // 顯示 YYYY-MM-DD HH:mm
+      // Google Sheet createdAt 轉換
+      formatListingDate(date) {
+        if (!date) return '';
+
+        let dateObj;
+
+        // 如果是字串，嘗試解析
+        if (typeof date === 'string') {
+          dateObj = new Date(date);
+        } else if (date instanceof Date) {
+          dateObj = date;
+        } else {
+          return '';
+        }
+
+        // 檢查日期是否有效
+        if (Number.isNaN(dateObj.getTime())) return '';
+
+        const year = dateObj.getFullYear();
+        const month = String(dateObj.getMonth() + 1).padStart(2, '0');
+        const day = String(dateObj.getDate()).padStart(2, '0');
+        const hours = String(dateObj.getHours()).padStart(2, '0');
+        const minutes = String(dateObj.getMinutes()).padStart(2, '0');
+
+        return `${year}-${month}-${day} ${hours}:${minutes}`;
+      },
+
+      // 計算已上架多久
+      getTimeAgo(listingDate) {
+        if (!listingDate) return '未知時間';
+
+        try {
+          const now = new Date();
+          const listed = new Date(listingDate);
+
+          if (Number.isNaN(listed.getTime())) return '未知時間';
+
+          const diffMs = now - listed;
+          const diffSeconds = Math.floor(diffMs / 1000);
+          const diffMinutes = Math.floor(diffSeconds / 60);
+          const diffHours = Math.floor(diffMinutes / 60);
+          const diffDays = Math.floor(diffHours / 24);
+
+          if (diffSeconds < 60) return '剛剛上架';
+          if (diffMinutes < 60) return `${diffMinutes} 分鐘前`;
+          if (diffHours < 24) return `${diffHours} 小時前`;
+          if (diffDays < 7) return `${diffDays} 天前`;
+          if (diffDays < 30) return `${Math.floor(diffDays / 7)} 週前`;
+          return `${Math.floor(diffDays / 30)} 個月前`;
+        } catch (error) {
+          return '未知時間';
+        }
+      },
+
+      async submitTradeCard() {
+        const select = document.getElementById('sellCardSelect');
+        const priceInput = document.getElementById('sellPriceInput');
+        const button = document.getElementById('submitTradeCardBtn');
+
+        if (!this.selectedSellCard) {
+          this.showNotification('請先選擇要出售的卡片', 'error');
+          return;
+        }
+
+        const price = parseInt(priceInput?.value || '0', 10);
+        if (!price || price <= 0) {
+          this.showNotification('請輸入正確的出售價格', 'error');
+          return;
+        }
+
+        const selectedCard = this.selectedSellCard;
+        if (!selectedCard.cardId) {
+          this.showNotification('這張卡片目前無法出售', 'error');
+          return;
+        }
+
+        if (Number(selectedCard.quantity || 0) <= 0) {
+          this.showNotification('你沒有這張卡片', 'error');
+          return;
+        }
+
+        if (button) {
+          button.disabled = true;
+          button.textContent = '上架中...';
+        }
+
+        try {
+          // 建立上架日期
+          const now = new Date();
+          const listingDate = this.formatListingDate(now);
+
+          await window.GoogleSheetTradeApi.ensurePlayerProfile();
+          await window.GoogleSheetTradeApi.syncPlayerCards([selectedCard.word || selectedCard.cardId]);
+
+          const result = await window.GoogleSheetTradeApi.sellCard({
+            cardId: selectedCard.word || selectedCard.cardId,
+            cardName: selectedCard.zh || selectedCard.cardName || selectedCard.name,
+            rarity: selectedCard.rarity,
+            imageUrl: selectedCard.image || selectedCard.imageUrl,
+            category: selectedCard.category,
+            description: selectedCard.description,
+            video: selectedCard.video,
+            createdAt: listingDate // 建立上架時間
+          }, price);
+
+          if (!result.success) {
+            this.showNotification(result.message || '上架失敗', 'error');
+            return;
+          }
+
+          const listedCards = JSON.parse(localStorage.getItem('listedCards') || '{}');
+          listedCards[selectedCard.word || selectedCard.cardId] = {
+            tradeId: result.tradeId,
+            price: price,
+            listedAt: Date.now()
+          };
+          localStorage.setItem('listedCards', JSON.stringify(listedCards));
+
+          if (window.GoogleSheetTradeApi && typeof window.GoogleSheetTradeApi.markCardAsListed === 'function') {
+            window.GoogleSheetTradeApi.markCardAsListed(selectedCard.word || selectedCard.cardId, result.tradeId);
+          }
+
+          this.deductOwnedCardAfterSell(selectedCard.word || selectedCard.cardId);
+
+          if (select) select.value = '';
+          if (priceInput) priceInput.value = '';
+          this.selectedSellCard = null;
+
+          this.showNotification('卡片已成功上架', 'success');
+          await this.renderTradeShop();
+          await this.loadSellableCards();
+        } catch (error) {
+          console.error('交易頁上架出售失敗:', error);
+          const message = error && error.message
+            ? error.message.includes('Failed to fetch')
+              ? 'Google Sheet 連線失敗，請檢查網路'
+              : error.message
+            : '上架失敗，請稍後再試';
+          this.showNotification(message, 'error');
+        } finally {
+          if (button) {
+            button.disabled = false;
+            button.textContent = '上架出售';
+          }
+        }
       },
 
       getInviteCodeChests() {
@@ -2265,19 +4760,22 @@
         });
 
         grid.innerHTML = sorted.map((c, idx) => {
-          const title = c.categoryName ? `分類：${c.categoryName}` : (c.setId || '套裝獎勵');
-          const codeText = c.code ? c.code : '（尚未分配）';
+          const title = c.categoryName ? `分類：${this.escapeHTML(c.categoryName)}` : (this.escapeHTML(c.setId) || '套裝獎勵');
+          const codeText = c.code ? this.escapeHTML(c.code) : '（尚未分配）';
           const stars = c.stars || 0;
           const earnedAt = c.earnedAt ? new Date(c.earnedAt).toLocaleString('zh-TW') : '';
           return `
             <div class="chest-card ${c.used ? 'used' : ''}">
+              <div class="chest-image-wrap">
+                <img class="chest-image" src="https://i.pinimg.com/736x/66/11/c6/6611c6066259ccd89441b4449d66f28b.jpg" alt="邀請碼寶箱" onerror="this.style.display='none'; this.closest('.chest-image-wrap').classList.add('image-missing');">
+              </div>
               <div class="chest-title">🎁 邀請碼寶箱</div>
               <div class="chest-meta">
-                <span>⭐ ${stars}</span>
+                <span>⭐ ${this.escapeHTML(String(stars))}</span>
                 <span>${title}</span>
               </div>
               <div class="chest-code">${codeText}</div>
-              <div style="text-align:center;color:rgba(255,255,255,0.7);font-size:12px;">${earnedAt}</div>
+              <div class="chest-time">${this.escapeHTML(earnedAt)}</div>
               <div class="chest-actions">
                 ${(!c.used && c.code) ? `<button class="redeem-chest-btn" onclick="ShopSystem.redeemInviteChest(${idx})">兌換</button>` : `<button class="redeem-chest-btn" disabled style="opacity:0.6;cursor:not-allowed;">${c.used ? '已兌換' : '無法兌換'}</button>`}
               </div>
@@ -2314,8 +4812,8 @@
         if (!ok) return;
 
         // 增加星星
-        const currentStars = parseInt(localStorage.getItem('totalStars') || '0');
-        localStorage.setItem('totalStars', (currentStars + stars).toString());
+        const currentStars = this.getLocalPlayerStars();
+        this.saveLocalPlayerStars(currentStars + stars);
 
         // 標記為已使用
         const record = { code, stars, used: true, usedAt: new Date().toISOString(), usedBy: 'user' };
@@ -2332,10 +4830,16 @@
       },
 
       // 更新星星顯示
-      updateStarsDisplay() {
+      updateStarsDisplay(stars) {
         const starsCount = document.getElementById('totalStarsCount');
-        const currentStars = parseInt(localStorage.getItem('totalStars') || '0');
-        starsCount.textContent = `⭐ ${currentStars}`;
+        const currentStars = Number.isFinite(Number(stars)) ? Math.floor(Number(stars)) : this.getLocalPlayerStars();
+        this.currentPlayerStars = currentStars;
+        if (starsCount) {
+          starsCount.textContent = `⭐ ${currentStars}`;
+        }
+        document.querySelectorAll('[data-player-stars]').forEach(el => {
+          el.textContent = String(currentStars);
+        });
       },
 
       // 更新已使用邀請碼統計
@@ -2387,6 +4891,10 @@
           const tradeBtn = document.querySelectorAll('.shop-tabs .tab-btn')[2];
           if (tradeBtn) tradeBtn.classList.add('active');
           this.currentTab = 'trade';
+          // 確保使用本地星星進行購買判斷
+          const localStars = this.getLocalPlayerStars();
+          this.currentPlayerStars = localStars;
+          this.updateStarsDisplay(localStars);
           this.renderTradeShop();
           return;
         }
@@ -2409,52 +4917,383 @@
         localStorage.setItem('ownedCards', JSON.stringify(cards));
       },
 
-      renderTradeShop() {
+      async renderTradeShop() {
         const grid = document.getElementById('tradeGrid');
         if (!grid) return;
 
-        if (!Array.isArray(window.allCards)) {
-          grid.innerHTML = '<div class="trade-empty">卡片資料尚未載入，請稍後重整或先進入一次抽卡頁。</div>';
+        try {
+          this.setTradeStatus('正在同步跨裝置交易資料...');
+          await this.ensureTradeCloudReady();
+          // 確保使用本地星星進行購買判斷
+          const localStars = this.getLocalPlayerStars();
+          this.currentPlayerStars = localStars;
+          this.updateStarsDisplay(localStars);
+
+          const [marketResult, myOrdersResult, sellerOrdersResult, claimableResult] = await Promise.all([
+            window.GoogleSheetTradeApi.getMarketCards(),
+            window.GoogleSheetTradeApi.getMyOrders(),
+            window.GoogleSheetTradeApi.getSellerOrders(),
+            this.loadSellerClaimableTrades()
+          ]);
+
+          this.currentTradeMarket = Array.isArray(marketResult.cards) ? marketResult.cards : [];
+          this.currentMyOrders = Array.isArray(myOrdersResult.orders) ? myOrdersResult.orders : [];
+          this.currentSellerOrders = Array.isArray(sellerOrdersResult.orders) ? sellerOrdersResult.orders : [];
+
+          await this.loadSellableCards();
+          this.renderMarketCards();
+          this.renderMyTradeCards();
+          this.renderMyOrders();
+          this.renderSellerOrders();
+          this.setTradeStatus('');
+        } catch (error) {
+          console.error('讀取交易市場失敗:', error);
+          const errorMessage = error && error.message ? error.message : 'Google Sheet 連線失敗';
+          this.renderTradeEmpty('tradeGrid', `交易市場載入失敗：${errorMessage}`);
+          this.renderTradeEmpty('myTradeGrid', '目前無法讀取出售中卡片。');
+          this.renderTradeEmpty('myOrdersGrid', '目前無法讀取你的議價紀錄。');
+          this.renderTradeEmpty('sellerOrdersGrid', '目前無法讀取賣家通知。');
+          this.setTradeStatus(`交易市場載入失敗：${errorMessage}`, true);
+        }
+      },
+
+      renderMarketCards() {
+        const grid = document.getElementById('tradeGrid');
+        if (!grid) return;
+
+        if (!this.currentTradeMarket.length) {
+          this.renderTradeEmpty('tradeGrid', '目前沒有玩家上架卡片。');
           return;
         }
 
-        const owned = this.getOwnedCards();
-        const ownedSsr = window.allCards.filter(c => c && c.rarity === '超稀有' && owned[c.word]);
+        // 依照 createdAt 最新排序
+        this.currentTradeMarket.sort((a, b) => {
+          // 從 Google Sheet 讀取 createdAt 作為上架日期
+          const dateA = a.createdAt ? new Date(a.createdAt).getTime() : (a.listingDate ? new Date(a.listingDate).getTime() : 0);
+          const dateB = b.createdAt ? new Date(b.createdAt).getTime() : (b.listingDate ? new Date(b.listingDate).getTime() : 0);
+          return dateB - dateA; // 降序，最新的排前面
+        });
 
-        if (ownedSsr.length === 0) {
-          grid.innerHTML = '<div class="trade-empty">你目前沒有已解鎖的 SSR 卡片可以交易。</div>';
-          return;
-        }
+        const currentPlayerId = this.getCurrentPlayerId();
+        const myStars = Number(this.currentPlayerStars) || this.getLocalPlayerStars();
+        grid.innerHTML = this.currentTradeMarket.map(item => {
+          const isOwn = String(item.sellerId) === String(currentPlayerId);
+          const price = Number(item.price || 0);
+          const canBuy = Number(myStars) >= Number(price);
+          const rarityClass = this.getRarityClass(item.rarity);
+          const rarity = item.rarity || '';
+          const tradeId = item.tradeId || '';
+          const cardName = item.cardName || item.zh || item.name || item.word || item.cardId || '未命名卡片';
+          const word = item.word || item.cardId || '';
+          const imageUrl = item.imageUrl || item.image || item.img || item.cardImage || '';
+          const sellerName = item.sellerName || item.playerName || '未知賣家';
+          const isVideo = String(imageUrl).toLowerCase().includes('.mp4');
 
-        const defaultPrice = 200;
-        grid.innerHTML = ownedSsr.map(card => {
-          const safeZh = String(card.zh || '');
-          const safeEn = String(card.word || '');
-          const safeCat = String(card.category || '');
-          const mediaUrl = String(card.image || '');
-          const isMp4 = mediaUrl.toLowerCase().endsWith('.mp4');
+          // 從 Google Sheet 讀取 createdAt 作為上架日期
+          // createdAt 是卡片上架時間
+          // 優先順序：createdAt -> listingDate -> 未知日期
+          const rawListingDate = item.createdAt || item.listingDate;
+          const listingDate = rawListingDate ? this.formatListingDate(rawListingDate) : '未知日期';
+          const timeAgo = this.getTimeAgo(rawListingDate);
 
-          const mediaHtml = mediaUrl
-            ? (isMp4
-                ? `<video src="${mediaUrl}" autoplay loop muted playsinline></video>`
-                : `<img src="${mediaUrl}" alt="${safeZh}">`)
-            : `<div style="height:100%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.7);">無圖片</div>`;
+          const actions = isOwn
+            ? `<button type="button" class="trade-cancel-btn negotiate-btn" onclick="ShopSystem.handleCancelTrade('${this.escapeHTML(String(tradeId)).replace(/'/g, "\\'")}')">取消出售</button>`
+            : `
+              <button type="button" class="trade-buy-btn negotiate-btn" onclick="ShopSystem.handleBuyTrade('${this.escapeHTML(String(tradeId)).replace(/'/g, "\\'")}', this)" ${canBuy ? '' : 'disabled'}>${canBuy ? '購買' : '星星不足'}</button>
+            `;
 
           return `
-            <div class="trade-card">
-              <div class="trade-card-media">${mediaHtml}</div>
-              <div class="trade-card-title">🌟 ${safeZh}</div>
-              <div class="trade-card-subtitle">${safeEn}</div>
-              <div class="trade-card-meta">
-                <span>SSR / 超稀有</span>
-                <span>📂 ${safeCat}</span>
+            <article class="trade-market-card ${rarityClass}" data-trade-id="${this.escapeHTML(String(tradeId))}">
+              <div class="trade-market-image-wrap">
+                ${
+                  imageUrl
+                    ? (
+                      isVideo
+                        ? `<video src="${this.escapeHTML(imageUrl)}" autoplay muted loop playsinline></video>`
+                        : `<img src="${this.escapeHTML(imageUrl)}" alt="${this.escapeHTML(cardName)}">`
+                    )
+                    : `<div class="trade-market-no-image">無圖片</div>`
+                }
+                <div class="trade-market-rarity-badge">${this.escapeHTML(rarity || '未知')}</div>
               </div>
-              <div class="trade-controls">
-                <button class="negotiate-btn" onclick="ShopSystem.openBargain('${safeEn.replace(/'/g, "\\'")}')">💬 議價</button>
+              <div class="trade-market-info">
+                <h4 class="trade-market-card-name">${this.escapeHTML(cardName)}</h4>
+                <div class="trade-market-card-word">${this.escapeHTML(word)}</div>
+                <div class="trade-market-meta">
+                  <span>賣家</span>
+                  <strong>${this.escapeHTML(sellerName)}</strong>
+                </div>
+                <div class="trade-market-price">
+                  <span>售價</span>
+                  <strong>${price} 星星</strong>
+                </div>
+                <div class="trade-market-listing-date">
+                  <span>📅 上架日期</span>
+                  <span class="listing-date-value">${this.escapeHTML(listingDate)}</span>
+                </div>
+                <div class="trade-market-time-ago">
+                  <span>⏰ 已上架</span>
+                  <span class="time-ago-value">${this.escapeHTML(timeAgo)}</span>
+                </div>
+                <div class="trade-market-actions">${actions}</div>
+              </div>
+            </article>
+          `;
+        }).join('');
+      },
+
+      async loadSellerClaimableTrades() {
+        try {
+          const sellerId = this.getCurrentPlayerId();
+          if (!sellerId) return;
+
+          const result = await window.GoogleSheetTradeApi.getSellerClaimableTrades(sellerId);
+          if (result && result.success) {
+            this.renderSellerIncomeList(result.trades || [], result.totalAmount || 0, result.count || 0);
+          }
+        } catch (error) {
+          console.error('載入待領取星星失敗:', error);
+        }
+      },
+
+      renderSellerIncomeList(trades, totalAmount, count) {
+        const list = document.getElementById('sellerIncomeList');
+        const totalEl = document.getElementById('pendingClaimStars');
+        const countEl = document.getElementById('pendingClaimCount');
+        const claimAllBtn = document.getElementById('claimAllStarsBtn');
+
+        if (!list) return;
+
+        if (totalEl) totalEl.textContent = Number.isFinite(totalAmount) ? totalAmount : 0;
+        if (countEl) countEl.textContent = Number.isFinite(count) ? count : 0;
+
+        if (claimAllBtn) {
+          claimAllBtn.disabled = trades.length === 0;
+          claimAllBtn.dataset.tradeIds = trades.map(t => t.tradeId).join(',');
+        }
+
+        if (!trades.length) {
+          list.innerHTML = '<p class="empty-text">目前沒有待領取星星。</p>';
+          return;
+        }
+
+        list.innerHTML = trades.map(trade => {
+          const amount = Number(trade.claimAmount || trade.price || 0);
+          const safeAmount = Number.isFinite(amount) ? amount : 0;
+          const rarityClass = this.getRarityClass(trade.rarity);
+
+          return `
+            <div class="seller-income-item warehouse-card trade-card ${rarityClass}" data-trade-id="${this.escapeHTML(String(trade.tradeId))}">
+              <div class="warehouse-card-image-wrap">
+                <img src="${this.escapeHTML(String(trade.imageUrl || ''))}" alt="${this.escapeHTML(trade.cardName || '卡片圖片')}">
+              </div>
+
+              <div class="warehouse-card-info">
+                <div class="warehouse-card-name">${this.escapeHTML(trade.cardName || '未命名卡片')}</div>
+                <div class="warehouse-card-rarity">${this.escapeHTML(trade.rarity || '')}</div>
+              </div>
+
+              <div class="trade-card-extra">
+                <div class="trade-card-price">可領取：${this.escapeHTML(String(safeAmount))} 星星</div>
+
+                <button
+                  type="button"
+                  class="claim-single-stars-btn"
+                  data-trade-id="${trade.tradeId}"
+                >
+                  領取 ${safeAmount} 星星
+                </button>
               </div>
             </div>
           `;
         }).join('');
+      },
+
+      async handleClaimSingleStars(tradeId, button) {
+        if (!confirm('確定要領取這筆賣卡片星星嗎？')) return;
+
+        const oldText = button.textContent;
+        button.disabled = true;
+        button.textContent = '領取中...';
+
+        try {
+          const result = await window.GoogleSheetTradeApi.claimSoldCardStars(tradeId);
+
+          if (!result || !result.success) {
+            this.showNotification(result && result.message ? result.message : '領取失敗，請稍後再試', 'error');
+            return;
+          }
+
+          // 將本地星星加上 claimAmount，保留本地優惠碼星星
+          const currentLocalStars = this.getLocalPlayerStars();
+          const claimAmount = result.claimAmount || 0;
+          const newTotalStars = currentLocalStars + claimAmount;
+          this.saveLocalPlayerStars(newTotalStars);
+          this.updateStarsDisplay(newTotalStars);
+
+          this.showNotification(result.message || '星星領取成功', 'success');
+          await this.loadSellerClaimableTrades();
+          await this.renderTradeShop();
+
+        } catch (error) {
+          console.error('領取星星失敗', error);
+          this.showNotification('Google Sheet 連線失敗，請檢查網路', 'error');
+
+        } finally {
+          button.disabled = false;
+          button.textContent = oldText || '領取星星';
+        }
+      },
+
+      async handleClaimAllStars(button) {
+        if (!confirm('確定要領取全部賣卡片收益嗎？')) return;
+
+        const oldText = button.textContent;
+        button.disabled = true;
+        button.textContent = '領取中...';
+
+        try {
+          const result = await window.GoogleSheetTradeApi.claimAllSoldCardStars();
+
+          if (!result || !result.success) {
+            this.showNotification(result && result.message ? result.message : '領取全部失敗，請稍後再試', 'error');
+            return;
+          }
+
+          // 將本地星星加上 totalAmount，保留本地優惠碼星星
+          const currentLocalStars = this.getLocalPlayerStars();
+          const totalAmount = result.totalAmount || 0;
+          const newTotalStars = currentLocalStars + totalAmount;
+          this.saveLocalPlayerStars(newTotalStars);
+          this.updateStarsDisplay(newTotalStars);
+
+          this.showNotification(result.message || '全部收益已領取', 'success');
+          await this.loadSellerClaimableTrades();
+          await this.renderTradeShop();
+
+        } catch (error) {
+          console.error('一鍵領取失敗', error);
+          this.showNotification('Google Sheet 連線失敗，請檢查網路', 'error');
+
+        } finally {
+          button.disabled = false;
+          button.textContent = oldText || '一鍵領取全部';
+        }
+      },
+
+      loadMySellingCards() {
+        this.renderMyTradeCards();
+      },
+
+      renderMyTradeCards() {
+        const currentPlayerId = this.getCurrentPlayerId();
+        const myTrades = this.currentTradeMarket.filter(item => String(item.sellerId) === String(currentPlayerId));
+
+        if (!myTrades.length) {
+          this.renderTradeEmpty('myTradeGrid', '你目前沒有出售中的卡片。');
+          return;
+        }
+
+        const grid = document.getElementById('myTradeGrid');
+        if (!grid) return;
+
+        grid.innerHTML = myTrades.map(item => `
+          <div class="trade-card ${this.getRarityClass(item.rarity)}">
+            <div class="trade-card-media">${this.createTradeCardMedia(item)}</div>
+            <div class="trade-card-info">
+              <div class="trade-card-title">${this.escapeHTML(String(item.cardName || ''))}</div>
+              <div class="trade-card-subtitle">${this.escapeHTML(String(item.cardId || ''))}</div>
+              <div class="trade-card-price">價格：${this.escapeHTML(String(Number(item.price || 0)))} 星星</div>
+              <div class="trade-card-meta">
+                <span>${this.escapeHTML(String(item.rarity || ''))}</span>
+                <span>出售中</span>
+              </div>
+            </div>
+            <div class="trade-controls">
+              <button class="negotiate-btn" onclick="ShopSystem.handleCancelTrade('${this.escapeHTML(String(item.tradeId)).replace(/'/g, "\\'")}')">取消出售</button>
+            </div>
+          </div>
+        `).join('');
+      },
+
+      renderMyOrders() {
+        // 議價功能已移除
+        const grid = document.getElementById('myOrdersGrid');
+        if (grid) grid.innerHTML = '';
+      },
+
+      renderSellerOrders() {
+        // 議價功能已移除
+        const grid = document.getElementById('sellerOrdersGrid');
+        if (grid) grid.innerHTML = '';
+      },
+
+      async handleBuyTrade(tradeId, button) {
+        if (!tradeId) {
+          this.showNotification('找不到交易資料', 'error');
+          return;
+        }
+
+        if (!confirm('確定要購買這張卡片嗎？')) return;
+
+        const oldText = button ? button.textContent : '購買';
+        try {
+          if (button) {
+            button.disabled = true;
+            button.textContent = '購買中...';
+          }
+
+          // 先同步本地星星到 Google Sheet
+          const localStars = this.getLocalPlayerStars();
+          if (window.GoogleSheetTradeApi && typeof window.GoogleSheetTradeApi.saveLocalPlayerStars === 'function') {
+            window.GoogleSheetTradeApi.saveLocalPlayerStars(localStars);
+          }
+
+          const result = await window.GoogleSheetTradeApi.buyCard(tradeId);
+          if (!result.success) {
+            this.showNotification(result.message || '購買失敗', 'error');
+            return;
+          }
+
+          const trade = this.currentTradeMarket.find(item => String(item.tradeId) === String(tradeId));
+          if (trade && window.GoogleSheetTradeApi) {
+            window.GoogleSheetTradeApi.addCardToLocalCollection(trade.cardId);
+            window.GoogleSheetTradeApi.unmarkCardAsListed(trade.cardId);
+          }
+
+          // 使用後端回傳的星星數更新本地顯示
+          if (typeof result.buyerStars === 'number') {
+            this.saveLocalPlayerStars(result.buyerStars);
+            this.updateStarsDisplay(result.buyerStars);
+          }
+
+          this.showNotification(result.message || '購買成功', 'success');
+          await this.renderTradeShop();
+        } catch (error) {
+          this.showNotification(error.message || 'Google Sheet 連線失敗，請檢查網路', 'error');
+        } finally {
+          if (button) {
+            button.disabled = false;
+            button.textContent = oldText || '購買';
+          }
+        }
+      },
+
+      async handleCancelTrade(tradeId) {
+        if (!confirm('確定要取消這筆出售嗎？')) return;
+
+        try {
+          const trade = this.currentTradeMarket.find(item => String(item.tradeId) === String(tradeId));
+          const result = await window.GoogleSheetTradeApi.cancelTrade(tradeId);
+          if (result.success && trade && window.GoogleSheetTradeApi) {
+            window.GoogleSheetTradeApi.addCardToLocalCollection(trade.cardId);
+            window.GoogleSheetTradeApi.unmarkCardAsListed(trade.cardId);
+          }
+          this.showNotification(result.message || '已取消出售', result.success ? 'success' : 'error');
+          await this.renderTradeShop();
+        } catch (error) {
+          this.showNotification(error.message || '取消出售失敗', 'error');
+        }
       },
 
       sellCard(cardWord) {
@@ -2473,11 +5312,16 @@
         }
 
         const card = Array.isArray(window.allCards) ? window.allCards.find(c => c.word === cardWord) : null;
-        const displayName = card?.zh ? `${card.zh} (${card.word})` : cardWord;
+        const displayName = card?.zh ? `${this.escapeHTML(card.zh)} (${this.escapeHTML(card.word)})` : this.escapeHTML(cardWord);
         const ok = confirm(`確定要出售 SSR 卡片：\n${displayName}\n\n可獲得 ⭐ ${price} 星星\n\n注意：出售後將從倉庫移除。`);
         if (!ok) return;
 
-        delete owned[cardWord];
+        if (typeof owned[cardWord] === 'number') {
+          owned[cardWord] -= 1;
+          if (owned[cardWord] <= 0) delete owned[cardWord];
+        } else {
+          delete owned[cardWord];
+        }
         this.setOwnedCards(owned);
 
         // 同步移除 NEW 標記（如果有）
@@ -2496,14 +5340,15 @@
         if (window.LinkageSystem && window.LinkageSystem.stars && typeof window.LinkageSystem.stars.add === 'function') {
           window.LinkageSystem.stars.add(price);
         } else {
-          const currentStars = parseInt(localStorage.getItem('totalStars') || '0');
-          localStorage.setItem('totalStars', (currentStars + price).toString());
+          const currentStars = this.getLocalPlayerStars();
+          this.saveLocalPlayerStars(currentStars + price);
           this.updateStarsDisplay();
         }
 
         this.showNotification(`✅ 出售成功！獲得 ⭐ ${price} 星星`, 'success');
         this.updateStarsDisplay();
         this.renderTradeShop();
+        this.renderSellCardSelect();
       },
 
       // ========== 議價系統 ==========
@@ -2599,7 +5444,7 @@
           playerOffers: [],
           shopkeeperOffers: [],
           round: 0,
-          maxRounds: 5,
+          maxRounds: 3,
           finalPrice: null,
           shopkeeperMood: 'neutral'
         };
@@ -2635,7 +5480,7 @@
           playerOffers: [],
           shopkeeperOffers: [],
           round: 0,
-          maxRounds: 5,
+          maxRounds: 3,
           finalPrice: null,
           shopkeeperMood: 'neutral'
         };
@@ -2672,6 +5517,14 @@
         if (!price || price <= 0) {
           this.setShopkeeperMood('angry');
           this.setDialogue('請輸入有效的價格！');
+          return;
+        }
+
+        // 檢查是否達到最大輪次
+        if (this.bargainState.round >= this.bargainState.maxRounds) {
+          this.setShopkeeperMood('angry');
+          this.setDialogue('議價次數已用盡，交易失敗！');
+          setTimeout(() => this.closeBargain(), 2000);
           return;
         }
 
@@ -2781,7 +5634,7 @@
         const item = document.createElement('div');
         item.className = `history-item ${who}`;
         const label = who === 'player' ? '👤 你開價' : '🏪 老板還價';
-        item.innerHTML = `<span>${label}</span><span>⭐ ${price}</span>`;
+        item.innerHTML = `<span>${this.escapeHTML(label)}</span><span>⭐ ${this.escapeHTML(String(price))}</span>`;
         list.appendChild(item);
         list.scrollTop = list.scrollHeight;
       },
@@ -2829,10 +5682,15 @@
         }
 
         const card = Array.isArray(window.allCards) ? window.allCards.find(c => c.word === cardWord) : null;
-        const displayName = card?.zh ? `${card.zh} (${card.word})` : cardWord;
+        const displayName = card?.zh ? `${this.escapeHTML(card.zh)} (${this.escapeHTML(card.word)})` : this.escapeHTML(cardWord);
 
         // 移除卡片
-        delete owned[cardWord];
+        if (typeof owned[cardWord] === 'number') {
+          owned[cardWord] -= 1;
+          if (owned[cardWord] <= 0) delete owned[cardWord];
+        } else {
+          delete owned[cardWord];
+        }
         this.setOwnedCards(owned);
 
         // 同步移除 NEW 標記
@@ -2851,14 +5709,15 @@
         if (window.LinkageSystem && window.LinkageSystem.stars && typeof window.LinkageSystem.stars.add === 'function') {
           window.LinkageSystem.stars.add(price);
         } else {
-          const currentStars = parseInt(localStorage.getItem('totalStars') || '0');
-          localStorage.setItem('totalStars', (currentStars + price).toString());
+          const currentStars = this.getLocalPlayerStars();
+          this.saveLocalPlayerStars(currentStars + price);
           this.updateStarsDisplay();
         }
 
         this.showNotification(`✅ 成交！${displayName} 以 ⭐ ${price} 售出！`, 'success');
         this.updateStarsDisplay();
         this.renderTradeShop();
+        this.renderSellCardSelect();
       },
 
       initAdminMode() {
@@ -2890,7 +5749,7 @@
           .then(data => {
             this.inviteCodes = Array.isArray(data?.codes) ? data.codes : [];
             console.log(`✅ 成功載入 ${this.inviteCodes.length} 組邀請碼`);
-            
+
             // 載入完成後，檢查本地已使用的邀請碼並同步狀態
             this.syncLocalUsedCodes();
             this.updateUsedCodesInfo();
@@ -3216,50 +6075,386 @@
 
       // 兌換邀請碼
       redeemInviteCode() {
+        // 防止重複點擊
+        if (this.isRedeeming) {
+          console.log('[邀請碼寶箱] 正在兌換中，請稍候');
+          return;
+        }
+
         const codeInput = document.getElementById('inviteCodeInput');
         const code = codeInput.value.trim().toUpperCase();
 
-        if (!Array.isArray(this.inviteCodes) || this.inviteCodes.length === 0) {
-          this.showNotification('邀請碼資料尚未載入（請確認用伺服器方式開啟頁面，或稍後再試）', 'error');
-          this.setInputStatus('error');
-          return;
-        }
-        
         if (!code) {
-          this.showNotification('請輸入邀請碼', 'error');
+          this.showNotification('請輸入優惠碼', 'error');
           this.setInputStatus('error');
           return;
         }
 
-        if (code.length < 7 || code.length > 9) {
-          this.showNotification('邀請碼格式錯誤，應為7-9位英數字', 'error');
-          this.setInputStatus('error');
-          return;
+        console.log('[邀請碼寶箱] 輸入優惠碼：', code);
+
+        this.isRedeeming = true;
+        const redeemButton = document.querySelector('.invite-btn');
+        if (redeemButton) {
+          redeemButton.disabled = true;
+          redeemButton.textContent = '兌換中...';
         }
 
-        // 檢查邀請碼是否存在
-        const inviteCode = this.inviteCodes.find(c => c.code === code);
-        
-        if (!inviteCode) {
-          this.showNotification('邀請碼不存在', 'error');
+        try {
+          // 標準化邀請碼
+          const normalizedCode = typeof normalizeInviteCode === 'function' ? normalizeInviteCode(code) : code.toUpperCase();
+          console.log('[邀請碼寶箱] normalize 後：', normalizedCode);
+
+          // 查找邀請碼
+          const inviteCode = this.findInviteRewardByCode(normalizedCode);
+          console.log('[邀請碼寶箱] 是否找到邀請碼：', !!inviteCode);
+
+          if (!inviteCode) {
+            this.showNotification('優惠碼不存在或已失效', 'error');
+            this.setInputStatus('error');
+            return;
+          }
+
+          // 檢查邀請碼是否已被使用
+          if (this.hasUsedInviteCode(normalizedCode)) {
+            this.showNotification('這組邀請碼已經使用過了', 'error');
+            this.setInputStatus('error');
+            return;
+          }
+
+          // 發放獎勵
+          const success = this.giveInviteReward(inviteCode);
+          console.log('[邀請碼寶箱] 獎勵發放結果：', success);
+
+          if (!success) {
+            this.showNotification('獎勵發放失敗，請稍後再試', 'error');
+            this.setInputStatus('error');
+            return;
+          }
+
+          // 記錄已使用
+          this.saveUsedInviteCode(normalizedCode);
+
+          // 顯示成功訊息
+          const rewardAmount = inviteCode.rewardAmount || inviteCode.stars || 0;
+          this.showNotification(`🎉 兌換成功！獲得 ${rewardAmount} 顆星星！`, 'success');
+          this.setInputStatus('success');
+
+          // 清空輸入框
+          document.getElementById('inviteCodeInput').value = '';
+
+          // 更新顯示
+          this.updateStarsDisplay();
+          this.updateUsedCodesInfo();
+
+          // 播放音效
+          if (typeof StarRewardSystem !== 'undefined') {
+            StarRewardSystem.playStarSound();
+          }
+
+          // 3秒後清除狀態
+          setTimeout(() => {
+            this.setInputStatus('normal');
+          }, 3000);
+        } catch (error) {
+          console.error('[邀請碼寶箱] 兌換失敗：', error);
+          this.showNotification('目前無法兌換，請稍後再試', 'error');
           this.setInputStatus('error');
-          return;
+        } finally {
+          this.isRedeeming = false;
+          const redeemButton = document.querySelector('.invite-btn');
+          if (redeemButton) {
+            redeemButton.disabled = false;
+            redeemButton.textContent = '兌換';
+          }
+        }
+      },
+
+      // 查找邀請碼獎勵資料
+      findInviteRewardByCode(inputCode) {
+        const code = typeof normalizeInviteCode === 'function' ? normalizeInviteCode(inputCode) : inputCode.toUpperCase();
+        return this.inviteCodes.find(item => {
+          const itemCode = typeof normalizeInviteCode === 'function' ? normalizeInviteCode(item.code) : String(item.code).toUpperCase();
+          return itemCode === code
+            && item.enabled !== false
+            && String(item.enabled).toLowerCase() !== 'false'
+            && String(item.enabled).trim() !== '0';
+        });
+      },
+
+      // 發放邀請碼獎勵
+      giveInviteReward(rewardData) {
+        if (!rewardData) return false;
+
+        // 支援新格式 (rewardType, rewardAmount) 和舊格式 (stars)
+        const rewardType = rewardData.rewardType || 'stars';
+        const rewardAmount = Number(rewardData.rewardAmount || rewardData.stars || 0);
+
+        if (rewardAmount <= 0) {
+          console.error('[邀請碼寶箱] 獎勵數量錯誤：', rewardData);
+          return false;
         }
 
-        // 檢查邀請碼是否已被使用（雙重檢查）
-        // 1. 檢查本地已兌換紀錄
+        // 增加星星
+        const currentStars = this.getLocalPlayerStars();
+        this.saveLocalPlayerStars(currentStars + rewardAmount);
+
+        console.log(`[邀請碼寶箱] 發放獎勵：${rewardAmount} 星星`);
+        return true;
+      },
+
+      // 檢查邀請碼是否已使用
+      hasUsedInviteCode(code) {
+        const normalizedCode = typeof normalizeInviteCode === 'function' ? normalizeInviteCode(code) : code.toUpperCase();
         const usedInviteCodes = JSON.parse(localStorage.getItem('usedInviteCodes') || '[]');
-        const alreadyUsed = usedInviteCodes.find(c => c.code === code);
-        
-        // 2. 檢查邀請碼本身的狀態
-        if (inviteCode.used || alreadyUsed) {
-          this.showNotification('此邀請碼已被使用，無法重複兌換', 'error');
-          this.setInputStatus('error');
+
+        console.log('[邀請碼寶箱] 檢查是否已使用：', normalizedCode);
+        console.log('[邀請碼寶箱] usedInviteCodes：', usedInviteCodes);
+
+        return usedInviteCodes.some(c => {
+          // 支援兩種格式：物件 {code: "..."} 或純字串
+          const usedCode = typeof c === 'object' && c.code
+            ? (typeof normalizeInviteCode === 'function' ? normalizeInviteCode(c.code) : String(c.code).toUpperCase())
+            : (typeof normalizeInviteCode === 'function' ? normalizeInviteCode(c) : String(c).toUpperCase());
+          return usedCode === normalizedCode;
+        });
+      },
+
+      // 儲存已使用的邀請碼
+      saveUsedInviteCode(code) {
+        const normalizedCode = typeof normalizeInviteCode === 'function' ? normalizeInviteCode(code) : code.toUpperCase();
+        const usedInviteCodes = JSON.parse(localStorage.getItem('usedInviteCodes') || '[]');
+
+        const exists = usedInviteCodes.some(c => {
+          // 支援兩種格式：物件 {code: "..."} 或純字串
+          const usedCode = typeof c === 'object' && c.code
+            ? (typeof normalizeInviteCode === 'function' ? normalizeInviteCode(c.code) : String(c.code).toUpperCase())
+            : (typeof normalizeInviteCode === 'function' ? normalizeInviteCode(c) : String(c).toUpperCase());
+          return usedCode === normalizedCode;
+        });
+
+        if (!exists) {
+          usedInviteCodes.push({
+            code: normalizedCode,
+            used: true,
+            usedAt: new Date().toISOString(),
+            usedBy: 'user'
+          });
+          localStorage.setItem('usedInviteCodes', JSON.stringify(usedInviteCodes));
+          console.log(`[邀請碼寶箱] 記錄已使用邀請碼: ${normalizedCode}`);
+        } else {
+          console.log(`[邀請碼寶箱] 邀請碼已存在於已使用清單: ${normalizedCode}`);
+        }
+      },
+
+      // 移除單一邀請碼的已使用紀錄（開發用修復函式）
+      removeUsedInviteCode(code) {
+        const normalizedCode = typeof normalizeInviteCode === 'function' ? normalizeInviteCode(code) : code.toUpperCase();
+        const usedInviteCodes = JSON.parse(localStorage.getItem('usedInviteCodes') || '[]');
+
+        const nextCodes = usedInviteCodes.filter(c => {
+          // 支援兩種格式：物件 {code: "..."} 或純字串
+          const usedCode = typeof c === 'object' && c.code
+            ? (typeof normalizeInviteCode === 'function' ? normalizeInviteCode(c.code) : String(c.code).toUpperCase())
+            : (typeof normalizeInviteCode === 'function' ? normalizeInviteCode(c) : String(c).toUpperCase());
+          return usedCode !== normalizedCode;
+        });
+
+        localStorage.setItem('usedInviteCodes', JSON.stringify(nextCodes));
+        console.log('[邀請碼修復] 已移除錯誤已使用紀錄：', normalizedCode);
+      },
+
+      // 重置所有套卡邀請碼的已使用紀錄（開發用修復函式）
+      resetUsedSeriesInviteCodes() {
+        if (typeof window.CardStorage === 'undefined') {
+          console.warn('[邀請碼修復] CardStorage 未載入');
           return;
         }
 
-        // 兌換成功
-        this.confirmInviteCodeRedeem(inviteCode);
+        const seriesRewards = window.CardStorage.getLocalSeriesInviteRewards();
+        const seriesCodes = seriesRewards.map(item => {
+          return typeof normalizeInviteCode === 'function' ? normalizeInviteCode(item.code) : String(item.code).toUpperCase();
+        });
+
+        const usedInviteCodes = JSON.parse(localStorage.getItem('usedInviteCodes') || '[]');
+
+        const nextCodes = usedInviteCodes.filter(c => {
+          // 支援兩種格式：物件 {code: "..."} 或純字串
+          const usedCode = typeof c === 'object' && c.code
+            ? (typeof normalizeInviteCode === 'function' ? normalizeInviteCode(c.code) : String(c.code).toUpperCase())
+            : (typeof normalizeInviteCode === 'function' ? normalizeInviteCode(c) : String(c).toUpperCase());
+          return !seriesCodes.includes(usedCode);
+        });
+
+        localStorage.setItem('usedInviteCodes', JSON.stringify(nextCodes));
+        console.log('[邀請碼修復] 已清除所有套卡邀請碼的錯誤已使用紀錄');
+        console.log('[邀請碼修復] 清除的邀請碼數量：', seriesCodes.length);
+      },
+
+      // 渲染套卡邀請碼（固定邀請碼版本）
+      renderSeriesRewardCodes() {
+        if (typeof window.CardStorage === 'undefined') {
+          console.warn('[套卡邀請碼] CardStorage 未載入，無法渲染套卡邀請碼');
+          return;
+        }
+
+        const container = document.getElementById('seriesRewardCodesContainer');
+        const noRewardDiv = document.getElementById('noSeriesReward');
+
+        if (!container) return;
+
+        // 檢查所有已完成的系列
+        const allCards = window.allCards || [];
+        const categories = [...new Set(allCards.map(card => card.category))];
+
+        // 固定邀請碼對照表
+        const seriesInviteCodes = {
+          '炎熱生物': 'SET-HOTBIO',
+          '銀河漫遊': 'SET-GALAXY',
+          '星耀契約': 'SET-STARCON',
+          '虛界驛站': 'SET-VIRTUAL',
+          '神話生物': 'SET-MYTH',
+          'Solo Leveling': 'SET-SOLO',
+          '未來都市': 'SET-FUTURE',
+          '深海奇觀': 'SET-DEEPSEA',
+          '鏡世妖光': 'SET-YOKAI',
+          '失落城市': 'SET-LOSTCITY',
+          '滅絕動物': 'SET-EXTINCT',
+          '霍爾城堡': 'SET-HOWL',
+          '星座神話': 'SET-ZODIAC',
+          '希臘神話': 'SET-GREEK',
+          '宮崎駿': 'SET-GHIBLI',
+          '鬼滅之刃': 'SET-DEMON',
+          'Blue Lock': 'SET-BLUE',
+          '寶可夢': 'SET-POKEMON',
+          '咒術迴戰': 'SET-JJK',
+          '獵人': 'SET-HUNTER',
+          '工作細胞': 'SET-CELL',
+          '偵探系列': 'SET-DETECT',
+          '皮克斯宇宙': 'SET-PIXAR',
+          '亞馬遜雨林': 'SET-AMAZON',
+          '冰原動物': 'SET-ICE',
+          '童話故事': 'SET-FAIRY',
+          'One Piece': 'SET-ONEPIECE',
+          '魷魚遊戲': 'SET-SQUID',
+          '都市傳說': 'SET-URBAN',
+          '火影忍者': 'SET-NARUTO'
+        };
+
+        const completedSeries = [];
+        categories.forEach(category => {
+          if (window.CardStorage.isCardSeriesCompleted(category)) {
+            const code = seriesInviteCodes[category];
+            if (code) {
+              // 獲取該系列的卡片數量
+              const allCards = window.allCards || [];
+              const seriesCards = allCards.filter(card => {
+                const targetSeries = category.toLowerCase().replace(/\s+/g, '');
+                const cardSeries = (card.category || card.series || card.group || '').toLowerCase().replace(/\s+/g, '');
+                return cardSeries === targetSeries || cardSeries.includes(targetSeries) || targetSeries.includes(cardSeries);
+              });
+              
+              // 根據卡片數量計算獎勵
+              let reward = 0;
+              const cardCount = seriesCards.length;
+              if (cardCount >= 40) reward = 10000;
+              else if (cardCount >= 30) reward = 5000;
+              else if (cardCount >= 25) reward = 3000;
+              else if (cardCount >= 20) reward = 2000;
+              else if (cardCount >= 15) reward = 1500;
+              else if (cardCount >= 10) reward = 1000;
+              else if (cardCount >= 6) reward = 500;
+              else reward = 300;
+              
+              completedSeries.push({
+                seriesName: category,
+                code: code,
+                isUsed: this.hasUsedInviteCode(code),
+                reward: reward,
+                cardCount: cardCount
+              });
+            }
+          }
+        });
+
+        console.log('[套卡邀請碼] 已完成系列：', completedSeries);
+
+        if (completedSeries.length === 0) {
+          container.innerHTML = '';
+          if (noRewardDiv) noRewardDiv.style.display = 'block';
+          return;
+        }
+
+        if (noRewardDiv) noRewardDiv.style.display = 'none';
+
+        container.innerHTML = completedSeries.map(series => `
+          <div class="series-reward-card" style="
+            background: rgba(255, 215, 0, 0.1);
+            border: 2px solid ${series.isUsed ? '#666' : '#ffd700'};
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            ${series.isUsed ? 'opacity: 0.6;' : ''}
+          ">
+            <h4 style="color: #ffd700; margin-bottom: 10px; font-size: 1.2rem;">${series.seriesName}</h4>
+            <div style="color: #ff6b6b; font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">
+              ⭐ ${series.reward} 星星
+            </div>
+            <div style="color: rgba(255, 255, 255, 0.6); font-size: 0.85rem; margin-bottom: 10px;">
+              (${series.cardCount} 張卡片)
+            </div>
+            <div class="reward-code-display" style="
+              background: rgba(0, 0, 0, 0.5);
+              border: 2px solid rgba(255, 215, 0, 0.5);
+              border-radius: 10px;
+              padding: 12px;
+              margin: 15px 0;
+              font-family: 'Roboto Mono', monospace;
+              font-size: 1.3rem;
+              font-weight: bold;
+              color: #ffd700;
+              letter-spacing: 2px;
+              word-break: break-all;
+            ">${series.code}</div>
+            <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+              <button onclick="ShopSystem.copySeriesCode('${series.code}')" style="
+                background: linear-gradient(135deg, #00ffff, #a259ff);
+                color: #000;
+                border: none;
+                padding: 8px 16px;
+                border-radius: 8px;
+                cursor: pointer;
+                font-weight: bold;
+                ${series.isUsed ? 'opacity: 0.5; cursor: not-allowed;' : ''}
+              " ${series.isUsed ? 'disabled' : ''}>複製邀請碼</button>
+              ${series.isUsed ? '<span style="color: #ff6b6b; font-weight: bold; padding: 8px 16px;">已使用</span>' : ''}
+            </div>
+            <div style="margin-top: 10px; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">
+              請到上方優惠碼輸入框兌換此邀請碼
+            </div>
+          </div>
+        `).join('');
+      },
+
+      // 複製套卡邀請碼
+      copySeriesCode(code) {
+        navigator.clipboard.writeText(code)
+          .then(() => {
+            this.showNotification('邀請碼已複製到剪貼簿', 'success');
+          })
+          .catch(error => {
+            console.error('[套卡邀請碼] 複製失敗：', error);
+            this.showNotification('複製失敗，請手動複製', 'error');
+          });
+      },
+
+      // 檢查並更新套卡完成狀態（只更新 UI，不生成邀請碼）
+      checkAndUpdateSeriesCompletion() {
+        if (typeof window.CardStorage === 'undefined') {
+          return;
+        }
+
+        // 更新 UI
+        this.renderSeriesRewardCodes();
       },
 
       // 確認兌換邀請碼
@@ -3272,8 +6467,8 @@
         inviteCode.usedBy = 'user'; // 可以加入用戶ID
 
         // 增加星星
-        const currentStars = parseInt(localStorage.getItem('totalStars') || '0');
-        localStorage.setItem('totalStars', (currentStars + stars).toString());
+        const currentStars = this.getLocalPlayerStars();
+        this.saveLocalPlayerStars(currentStars + stars);
 
         // 儲存已使用的邀請碼記錄
         this.saveUsedInviteCodes();
@@ -3374,13 +6569,82 @@
         */
       },
 
+      // 綁定交易所分頁切換
+      bindTradeCenterTabs() {
+        const buttons = document.querySelectorAll('.trade-tab-btn');
+        const panels = document.querySelectorAll('.trade-panel');
+
+        buttons.forEach(button => {
+          if (button.dataset.bound === 'true') return;
+          button.dataset.bound = 'true';
+
+          button.addEventListener('click', () => {
+            const tab = button.dataset.tradeTab;
+
+            buttons.forEach(btn => {
+              btn.classList.toggle('active', btn === button);
+            });
+
+            panels.forEach(panel => {
+              panel.classList.toggle('active', panel.dataset.tradePanel === tab);
+            });
+
+            if (tab === 'list') {
+              this.loadSellableCards();
+            }
+
+            if (tab === 'market') {
+              this.renderTradeShop();
+            }
+
+            if (tab === 'selling') {
+              this.loadMySellingCards();
+            }
+
+            if (tab === 'income') {
+              this.loadSellerClaimableTrades();
+            }
+          });
+        });
+      },
+
       // 設置事件監聽器
       setupEventListeners() {
+        // 綁定交易所分頁切換
+        this.bindTradeCenterTabs();
+
         // 邀請碼輸入框Enter鍵支援
         document.getElementById('inviteCodeInput').addEventListener('keypress', (e) => {
           if (e.key === 'Enter') {
             this.redeemInviteCode();
           }
+        });
+
+        // 重新讀取收益按鈕
+        const refreshBtn = document.getElementById('refreshSellerIncomeBtn');
+        if (refreshBtn) {
+          refreshBtn.addEventListener('click', async () => {
+            await this.loadSellerClaimableTrades();
+          });
+        }
+
+        // 一鍵領取全部按鈕
+        const claimAllBtn = document.getElementById('claimAllStarsBtn');
+        if (claimAllBtn) {
+          claimAllBtn.addEventListener('click', async () => {
+            await this.handleClaimAllStars(claimAllBtn);
+          });
+        }
+
+        // 單筆領取星星按鈕事件監聽
+        document.addEventListener('click', async (event) => {
+          const btn = event.target.closest('.claim-single-stars-btn');
+          if (!btn) return;
+
+          const tradeId = btn.dataset.tradeId;
+          if (!tradeId) return;
+
+          await this.handleClaimSingleStars(tradeId, btn);
         });
 
         // 添加滑入動畫樣式
@@ -3395,6 +6659,10 @@
       }
     };
     window.ShopSystem = ShopSystem; // ←加這行
+
+    // 導出修復函式到全局作用域（開發用）
+    window.removeUsedInviteCode = (code) => ShopSystem.removeUsedInviteCode(code);
+    window.resetUsedSeriesInviteCodes = () => ShopSystem.resetUsedSeriesInviteCodes();
 
     // 頁面載入時初始化
     window.addEventListener('load', function() {

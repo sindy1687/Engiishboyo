@@ -5,7 +5,8 @@
   <title>英打小英雄 - 首頁</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/shared.css">
+  <!-- TODO: css/shared.css file does not exist - commented out -->
+  <!-- <link rel="stylesheet" href="css/shared.css"> -->
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <style>
     /* 全局樣式 */
@@ -2087,6 +2088,24 @@
       left: 100%;
     }
 
+    .gm-entry-link {
+      background: rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .gm-entry-link:hover {
+      background: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
     .nav-btn.primary {
       background: linear-gradient(135deg, #00ffff 0%, #a259ff 100%);
       color: #000;
@@ -2583,6 +2602,260 @@
         width: 100%;
       }
     }
+
+    /* 首頁資料存檔區塊樣式 */
+    .home-save-section {
+      width: min(680px, calc(100% - 28px));
+      margin: 22px auto 0;
+      border-radius: 18px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.10);
+      border: 1px solid rgba(255, 255, 255, 0.20);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+    }
+
+    .home-save-toggle {
+      width: 100%;
+      border: 0;
+      padding: 13px 16px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 4px 12px;
+      align-items: center;
+      text-align: left;
+      cursor: pointer;
+      color: #ffffff;
+      background: rgba(15, 23, 42, 0.72);
+    }
+
+    .home-save-title {
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+    }
+
+    .home-save-desc {
+      grid-column: 1;
+      font-size: 13px;
+      line-height: 1.4;
+      opacity: 0.82;
+    }
+
+    .home-save-icon {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      font-size: 14px;
+      transition: transform 0.2s ease;
+    }
+
+    .home-save-toggle[aria-expanded="true"] .home-save-icon {
+      transform: rotate(180deg);
+    }
+
+    .home-save-panel {
+      padding: 14px;
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .home-save-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .home-save-actions button,
+    .home-save-upload {
+      border: 0 !important;
+      border-radius: 999px !important;
+      padding: 9px 15px !important;
+      min-width: 108px !important;
+      cursor: pointer !important;
+      font-size: 14px !important;
+      font-weight: 800 !important;
+      text-align: center !important;
+      color: #ffffff !important;
+      background: rgba(59, 130, 246, 0.92) !important;
+      box-shadow: none !important;
+      text-shadow: none !important;
+    }
+
+    #applyLocalBackupBtn {
+      background: rgba(34, 197, 94, 0.92) !important;
+    }
+
+    .home-save-actions button:hover,
+    .home-save-upload:hover {
+      filter: brightness(1.08) !important;
+    }
+
+    .home-save-links {
+      margin-top: 12px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    .home-save-links button {
+      border: 0 !important;
+      padding: 0 !important;
+      background: transparent !important;
+      color: rgba(255, 255, 255, 0.88) !important;
+      cursor: pointer !important;
+      font-size: 13px !important;
+      text-decoration: underline !important;
+      text-underline-offset: 3px !important;
+      box-shadow: none !important;
+      text-shadow: none !important;
+      border-radius: 0 !important;
+    }
+
+    .home-save-links button:hover {
+      color: #ffffff !important;
+    }
+
+    .home-save-status {
+      margin-top: 10px;
+      min-height: 20px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .home-save-status.success {
+      color: #86efac;
+    }
+
+    .home-save-status.error {
+      color: #fca5a5;
+    }
+
+    .home-save-status.info {
+      color: #bfdbfe;
+    }
+
+    .home-save-preview {
+      display: none;
+      margin-top: 10px;
+      padding: 12px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.94);
+      color: #1f2937;
+      font-size: 13px;
+      line-height: 1.6;
+      word-break: break-word;
+    }
+
+    .home-save-preview.is-visible {
+      display: block;
+    }
+
+    @media (max-width: 600px) {
+      .home-save-section {
+        width: calc(100% - 24px);
+        margin-top: 18px;
+        border-radius: 16px;
+      }
+
+      .home-save-actions {
+        flex-direction: column;
+      }
+
+      .home-save-actions button,
+      .home-save-upload {
+        width: 100% !important;
+        min-height: 42px !important;
+      }
+
+      .home-save-links {
+        gap: 4px;
+      }
+    }
+
+    /* Google Drive 雲端備份區塊樣式 */
+    .home-save-group {
+      margin-top: 12px;
+      padding: 12px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .home-save-group:first-child {
+      margin-top: 0;
+    }
+
+    .home-save-group-title {
+      margin: 0 0 10px;
+      font-size: 14px;
+      font-weight: 900;
+      color: #ffffff;
+      opacity: 0.95;
+    }
+
+    .cloud-save-group {
+      background: rgba(34, 197, 94, 0.10);
+      border: 1px solid rgba(34, 197, 94, 0.22);
+    }
+
+    .cloud-save-note {
+      margin: 8px 0 0;
+      font-size: 12px;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.78);
+      text-align: center;
+    }
+
+    .home-save-help {
+      margin: 8px 0 0;
+      font-size: 12px;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.72);
+      text-align: center;
+    }
+
+    #uploadDriveBackupBtn {
+      background: rgba(34, 197, 94, 0.92) !important;
+    }
+
+    #downloadDriveBackupBtn {
+      background: rgba(59, 130, 246, 0.92) !important;
+    }
+
+    /* Style for inline cloud buttons to match panel design */
+    .home-save-actions button[onclick="uploadCloudSave()"],
+    .home-save-actions button[onclick="downloadCloudSave()"] {
+      min-width: 120px !important;
+      padding: 9px 15px !important;
+      border-radius: 999px !important;
+      box-shadow: none !important;
+      text-shadow: none !important;
+    }
+
+    .home-save-actions button[onclick="uploadCloudSave()"] {
+      background: rgba(25, 118, 210, 0.92) !important;
+    }
+
+    .home-save-actions button[onclick="downloadCloudSave()"] {
+      background: rgba(46, 125, 50, 0.92) !important;
+    }
+
+    #openDriveFolderBtn {
+      background: rgba(100, 116, 139, 0.92) !important;
+    }
+
+    @media (max-width: 600px) {
+      .home-save-group {
+        padding: 10px;
+      }
+
+      .cloud-save-note {
+        text-align: left;
+      }
+    }
   </style>
 </head>
 <body>
@@ -2732,7 +3005,98 @@
       <button class="nav-btn" id="cardsBtn" onclick="location.href='cards.html'">📁 卡片收藏</button>
       <button class="nav-btn" id="achievementBtn" onclick="location.href='achievement.html'">🏆 成就勳章</button>
       <button class="nav-btn" onclick="location.href='stars_leaderboard.html'" style="background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);">⭐ 星星排行榜</button>
+      <a href="gm.html" class="gm-entry-link">GM 管理</a>
     </div>
+
+    <!-- 資料存檔與還原 -->
+    <section class="home-save-section">
+      <button
+        type="button"
+        class="home-save-toggle"
+        id="localBackupToggleBtn"
+        aria-expanded="false"
+        aria-controls="localBackupPanel"
+      >
+        <span class="home-save-title">資料存檔與還原</span>
+        <span class="home-save-desc">下載備份、選擇備份檔、雲端備份</span>
+        <span class="home-save-icon">▼</span>
+      </button>
+
+      <div class="home-save-panel" id="localBackupPanel" hidden>
+
+        <div class="home-save-group">
+          <h3 class="home-save-group-title">本地備份</h3>
+
+          <div class="home-save-actions">
+            <button type="button" id="downloadLocalBackupBtn">
+              下載備份
+            </button>
+
+            <label for="uploadLocalBackupInput" class="home-save-upload">
+              選擇備份檔
+            </label>
+
+            <input
+              type="file"
+              id="uploadLocalBackupInput"
+              accept=".json,application/json"
+              hidden
+            >
+
+            <button type="button" id="applyLocalBackupBtn">
+              套用備份
+            </button>
+          </div>
+
+          <p class="home-save-help">
+            可以選擇從 Google Drive 下載下來的 JSON 備份檔，找回網站資料。
+          </p>
+        </div>
+
+        <div class="home-save-group cloud-save-group">
+          <h3 class="home-save-group-title">雲端備份</h3>
+
+          <div class="home-save-actions">
+            <button type="button" id="uploadDriveBackupBtn">
+              上傳雲端
+            </button>
+
+            <button type="button" id="downloadDriveBackupBtn">
+              下載雲端
+            </button>
+
+            <button type="button" id="openDriveFolderBtn">
+              開啟雲端資料夾
+            </button>
+
+            <button onclick="uploadCloudSave()" style="padding:8px 12px; border-radius:10px; border:none; font-weight:700; background:#1976d2; color:#fff; box-shadow:0 2px 8px rgba(0,0,0,.2);">☁️ 上傳雲端</button>
+            <button onclick="downloadCloudSave()" style="padding:8px 12px; border-radius:10px; border:none; font-weight:700; background:#2e7d32; color:#fff; box-shadow:0 2px 8px rgba(0,0,0,.2);">☁️ 從雲端下載</button>
+          </div>
+
+          <p class="cloud-save-note">
+            可將目前資料備份到 Google Drive，也可下載最新雲端備份。
+          </p>
+        </div>
+
+        <div class="home-save-links">
+          <button type="button" id="previewLocalBackupBtn">
+            預覽資料
+          </button>
+          <span>｜</span>
+          <button type="button" id="clearLocalBackupBtn">
+            清除暫存
+          </button>
+          <span>｜</span>
+          <button type="button" id="restoreBeforeImportBtn">
+            還原匯入前資料
+          </button>
+        </div>
+
+        <div id="localBackupStatus" class="home-save-status"></div>
+        <div id="localBackupPreview" class="home-save-preview"></div>
+
+      </div>
+    </section>
   </div>
 
   <!-- 音效控制 -->
@@ -2786,6 +3150,8 @@
   <script src="js/achievementSystem.js"></script>
   <script src="js/characterDialogue.js"></script>
   <script src="js/cards.js"></script>
+  <script src="js/local-backup.js"></script>
+  <script src="js/google-drive-backup.js"></script>
   <script>
     console.log('=== JavaScript開始執行 ===');
     
@@ -2864,8 +3230,10 @@
         // 如果 LinkageSystem 還沒載入，直接更新星星顯示
         const totalStarsCount = document.getElementById('totalStarsCount');
         if (totalStarsCount) {
-          const currentStars = parseInt(localStorage.getItem('totalStars') || '0');
-          totalStarsCount.textContent = `⭐ ${currentStars}`;
+          const raw = localStorage.getItem('totalStars');
+          const value = Number(raw);
+          const currentStars = (Number.isFinite(value) && !Number.isNaN(value) && value >= 0) ? Math.floor(value) : 0;
+          totalStarsCount.textContent = currentStars;
         }
       }
     }
@@ -3277,13 +3645,13 @@
     // 緊急修復星星顯示
     function emergencyFixStarsDisplay() {
       console.log('🚨 執行緊急星星顯示修復...');
-      
+
       const starsDisplay = document.getElementById('starsDisplay');
       const totalStarsCount = document.getElementById('totalStarsCount');
-      
+
       if (starsDisplay) {
         // 強制顯示星星顯示
-        starsDisplay.style.cssText = 
+        starsDisplay.style.cssText =
           'position: fixed !important;' +
           'top: 15px !important;' +
           'left: 15px !important;' +
@@ -3305,22 +3673,29 @@
           'transition: all 0.3s ease !important;';
         console.log('✅ 星星顯示已強制修復');
       }
-      
+
       if (totalStarsCount) {
         // 強制顯示星星數量
-        totalStarsCount.style.cssText = 
+        totalStarsCount.style.cssText =
           'font-weight: bold !important;' +
           'color: #ffd700 !important;' +
           'text-shadow: 0 0 10px rgba(255, 215, 0, 0.5) !important;' +
           'font-size: 1rem !important;';
+
+        // 修復星星數值
+        const raw = localStorage.getItem('totalStars');
+        const value = Number(raw);
+        const currentStars = (Number.isFinite(value) && !Number.isNaN(value) && value >= 0) ? Math.floor(value) : 0;
+        totalStarsCount.textContent = currentStars;
+
         console.log('✅ 星星數量顯示已強制修復');
       }
-      
+
       // 重新更新星星顯示
       if (typeof updateStarsDisplay === 'function') {
         updateStarsDisplay();
       }
-      
+
       console.log('✅ 緊急星星顯示修復完成');
       showCustomMessage('✅ 星星顯示已修復', 'success');
     }
@@ -3749,7 +4124,7 @@
             },
             {
               type: "🔵",
-              content: "如有問題請聯繫客服或使用玩家信箱功能",
+              content: "如有問題請聯繫客服",
               time: "2024-01-05 14:20"
             },
             {
@@ -4740,7 +5115,7 @@
         },
         {
           type: "🔵",
-          content: "如有問題請聯繫客服或使用玩家信箱功能",
+          content: "如有問題請聯繫客服",
           time: "2024-01-05 14:20"
         },
         {
@@ -4996,10 +5371,6 @@
       }
     }
   </script>
-  <div style="position: fixed; right: 14px; top: 14px; display: flex; gap: 8px; z-index: 9999;">
-    <button onclick="uploadCloudSave()" style="padding:8px 12px; border-radius:10px; border:none; font-weight:700; background:#1976d2; color:#fff; box-shadow:0 2px 8px rgba(0,0,0,.2);">☁️ 上傳雲端</button>
-    <button onclick="downloadCloudSave()" style="padding:8px 12px; border-radius:10px; border:none; font-weight:700; background:#2e7d32; color:#fff; box-shadow:0 2px 8px rgba(0,0,0,.2);">☁️ 從雲端下載</button>
-  </div>
   
 </body>
 </html>
